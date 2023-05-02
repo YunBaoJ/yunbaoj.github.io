@@ -1,9 +1,9 @@
 {
     "version": "https://jsonfeed.org/version/1",
-    "title": "云云将",
-    "subtitle": "你",
+    "title": "云层不知梦",
+    "subtitle": "愿世界与你环环相扣",
     "icon": "http://example.com/images/favicon.ico",
-    "description": "你",
+    "description": "此物最相思",
     "home_page_url": "http://example.com",
     "items": [
         {
@@ -52,8 +52,8 @@
                 "计算机科学",
                 "二进制杂谈",
                 "Theme Shoka Documentation",
-                "Hexo",
-                "教程"
+                "教程",
+                "Hexo"
             ]
         },
         {
@@ -66,8 +66,8 @@
                 "计算机科学",
                 "二进制杂谈",
                 "Theme Shoka Documentation",
-                "Hexo",
-                "教程"
+                "教程",
+                "Hexo"
             ]
         },
         {
@@ -80,8 +80,8 @@
                 "计算机科学",
                 "二进制杂谈",
                 "Theme Shoka Documentation",
-                "教程",
-                "H"
+                "H",
+                "教程"
             ]
         },
         {
@@ -94,8 +94,8 @@
                 "计算机科学",
                 "二进制杂谈",
                 "Theme Shoka Documentation",
-                "Hexo",
-                "教程"
+                "教程",
+                "Hexo"
             ]
         }
     ]
