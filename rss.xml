@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <rss version="2.0">
     <channel>
-        <title>云层不知梦</title>
-        <subtitle>愿世界与你环环相扣</subtitle>
+        <title>Clouds are so deep</title>
+        <subtitle>May the world be closely tied with you.</subtitle>
         <icon>http://example.com/images/favicon.ico</icon>
         <link>http://example.com</link>
         <author>
           <name>YunBao</name>
         </author>
-        <description>此物最相思</description>
+        <description>This thing is most yearned for.</description>
         <language>zh_CN</language>
         <pubDate>Tue, 02 May 2023 23:21:53 +0800</pubDate>
         <lastBuildDate>Tue, 02 May 2023 23:21:53 +0800</lastBuildDate>
