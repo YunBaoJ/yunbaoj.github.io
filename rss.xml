@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <rss version="2.0">
     <channel>
-        <title>Clouds are so deep</title>
+        <title>Cloud’s blog</title>
         <subtitle>May the world be closely tied with you.</subtitle>
         <icon>http://example.com/images/favicon.ico</icon>
         <link>http://example.com</link>
@@ -9,7 +9,7 @@
           <name>YunBao</name>
         </author>
         <description>This thing is most yearned for.</description>
-        <language>简体中文</language>
+        <language>zh_CN</language>
         <pubDate>Tue, 02 May 2023 23:21:53 +0800</pubDate>
         <lastBuildDate>Tue, 02 May 2023 23:21:53 +0800</lastBuildDate>
         <category term="Y" />
