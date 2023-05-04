@@ -194,9 +194,9 @@ H~2~0
         <updated>2023-05-02T15:13:00.000Z</updated>
     </entry>
     <entry>
-        <id>http://yunbaoj.github.io/2023/05/02/sed/</id>
+        <id>http://yunbaoj.github.io/2023/05/02/computer-science/java/course-1/sed/</id>
         <title>Linux之sed的使用方法</title>
-        <link rel="alternate" href="http://yunbaoj.github.io/2023/05/02/sed/"/>
+        <link rel="alternate" href="http://yunbaoj.github.io/2023/05/02/computer-science/java/course-1/sed/"/>
         <content type="html">&lt;h3 id=&#34;行编辑器&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#行编辑器&#34;&gt;#&lt;/a&gt; 行编辑器&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;vi/vim 称为全文本编辑器，sed 和 awk 称为行编辑器&lt;/p&gt;
