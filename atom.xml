@@ -302,7 +302,9 @@ H~2~0
 &lt;p&gt;​     sum2+=avg[user]&lt;/p&gt;
 &lt;p&gt;print sum2/NR&lt;/p&gt;
 </content>
-        <category term="Linux" scheme="http://yunbaoj.github.io/categories/linux/" />
+        <category term="计算机科学" scheme="http://yunbaoj.github.io/categories/computer-science/" />
+        <category term="Java" scheme="http://yunbaoj.github.io/categories/computer-science/java/" />
+        <category term="零基础学Java语言-浙江大学-翁恺" scheme="http://yunbaoj.github.io/categories/computer-science/java/course-1/" />
         <updated>2023-05-02T15:05:25.917Z</updated>
     </entry>
     <entry>
