@@ -2232,6 +2232,12 @@ main >.inner {
   top: -10%;
   left: -10%;
 }
+.social .item.github::before {
+  background-color: #191717;
+}
+.social .item.github i {
+  color: #191717;
+}
 .social .item.music::before {
   background-color: #e60026;
 }
