@@ -45,11 +45,7 @@
       
       <categories>
           
-          <category> 计算机科学 </category>
-          
-          <category> Java </category>
-          
-          <category> 零基础学Java语言-浙江大学-翁恺 </category>
+          <category> linux </category>
           
       </categories>
       
@@ -98,9 +94,9 @@
       
         <tags>
             
-            <tag> 教程 </tag>
-            
             <tag> Hexo </tag>
+            
+            <tag> 教程 </tag>
             
         </tags>
       
@@ -129,9 +125,9 @@
       
         <tags>
             
-            <tag> 教程 </tag>
-            
             <tag> Hexo </tag>
+            
+            <tag> 教程 </tag>
             
         </tags>
       
@@ -160,9 +156,9 @@
       
         <tags>
             
-            <tag> H </tag>
-            
             <tag> 教程 </tag>
+            
+            <tag> H </tag>
             
         </tags>
       
@@ -191,9 +187,9 @@
       
         <tags>
             
-            <tag> 教程 </tag>
-            
             <tag> Hexo </tag>
+            
+            <tag> 教程 </tag>
             
         </tags>
       

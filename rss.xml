@@ -200,9 +200,7 @@ H~2~0
             <guid isPermalink="true">http://yunbaoj.github.io/2023/05/02/Linux/sed/</guid>
             <title>Linux之sed的使用方法</title>
             <link>http://yunbaoj.github.io/2023/05/02/Linux/sed/</link>
-            <category term="计算机科学" scheme="http://yunbaoj.github.io/categories/computer-science/" />
-            <category term="Java" scheme="http://yunbaoj.github.io/categories/computer-science/java/" />
-            <category term="零基础学Java语言-浙江大学-翁恺" scheme="http://yunbaoj.github.io/categories/computer-science/java/course-1/" />
+            <category term="linux" scheme="http://yunbaoj.github.io/categories/linux/" />
             <pubDate>Tue, 02 May 2023 23:05:25 +0800</pubDate>
             <description><![CDATA[ &lt;h3 id=&#34;行编辑器&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#行编辑器&#34;&gt;#&lt;/a&gt; 行编辑器&lt;/h3&gt;
 &lt;blockquote&gt;
@@ -333,10 +331,10 @@ H~2~0
             <title>Step.4 主题特殊功能</title>
             <link>http://yunbaoj.github.io/2020/08/13/special/</link>
             <category term="计算机科学" scheme="http://yunbaoj.github.io/categories/computer-science/" />
-            <category term="二进制杂谈" scheme="http://yunbaoj.github.io/categories/computer-science/note/" />
-            <category term="Theme Shoka Documentation" scheme="http://yunbaoj.github.io/categories/computer-science/note/Theme-Shoka-Documentation/" />
-            <category term="教程" scheme="http://yunbaoj.github.io/tags/%E6%95%99%E7%A8%8B/" />
+            <category term="二进制杂谈" scheme="http://yunbaoj.github.io/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/" />
+            <category term="Theme Shoka Documentation" scheme="http://yunbaoj.github.io/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/Theme-Shoka-Documentation/" />
             <category term="Hexo" scheme="http://yunbaoj.github.io/tags/Hexo/" />
+            <category term="教程" scheme="http://yunbaoj.github.io/tags/%E6%95%99%E7%A8%8B/" />
             <pubDate>Thu, 13 Aug 2020 21:45:48 +0800</pubDate>
             <description><![CDATA[ &lt;div class=&#34;note primary&#34;&gt;
 &lt;p&gt;&lt;a href=&#34;/computer-science/note/theme-shoka-doc/&#34;&gt;🚀快速开始&lt;/a&gt; - &lt;a href=&#34;/computer-science/note/theme-shoka-doc/dependents/&#34;&gt;💌依赖插件&lt;/a&gt; - &lt;a href=&#34;/computer-science/note/theme-shoka-doc/config/&#34;&gt;📌基本配置&lt;/a&gt; - &lt;a href=&#34;/computer-science/note/theme-shoka-doc/display/&#34;&gt;🌈界面显示&lt;/a&gt; - &lt;a href=&#34;/computer-science/note/theme-shoka-doc/special/&#34;&gt;&lt;strong&gt;🦄特殊功能&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
@@ -898,10 +896,10 @@ c-16-25.333-24-45-24-59z&#39;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;/span&gt;&lt;/spa
             <title>Step.3 界面显示</title>
             <link>http://yunbaoj.github.io/2020/08/13/display/</link>
             <category term="计算机科学" scheme="http://yunbaoj.github.io/categories/computer-science/" />
-            <category term="二进制杂谈" scheme="http://yunbaoj.github.io/categories/computer-science/note/" />
-            <category term="Theme Shoka Documentation" scheme="http://yunbaoj.github.io/categories/computer-science/note/Theme-Shoka-Documentation/" />
-            <category term="教程" scheme="http://yunbaoj.github.io/tags/%E6%95%99%E7%A8%8B/" />
+            <category term="二进制杂谈" scheme="http://yunbaoj.github.io/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/" />
+            <category term="Theme Shoka Documentation" scheme="http://yunbaoj.github.io/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/Theme-Shoka-Documentation/" />
             <category term="Hexo" scheme="http://yunbaoj.github.io/tags/Hexo/" />
+            <category term="教程" scheme="http://yunbaoj.github.io/tags/%E6%95%99%E7%A8%8B/" />
             <pubDate>Thu, 13 Aug 2020 21:12:48 +0800</pubDate>
             <description><![CDATA[ &lt;div class=&#34;note primary&#34;&gt;
 &lt;p&gt;&lt;a href=&#34;/computer-science/note/theme-shoka-doc/&#34;&gt;🚀快速开始&lt;/a&gt; - &lt;a href=&#34;/computer-science/note/theme-shoka-doc/dependents/&#34;&gt;💌依赖插件&lt;/a&gt; - &lt;a href=&#34;/computer-science/note/theme-shoka-doc/config/&#34;&gt;📌基本配置&lt;/a&gt; - &lt;a href=&#34;/computer-science/note/theme-shoka-doc/display/&#34;&gt;&lt;strong&gt;🌈界面显示&lt;/strong&gt;&lt;/a&gt; - &lt;a href=&#34;/computer-science/note/theme-shoka-doc/special/&#34;&gt;🦄特殊功能&lt;/a&gt;&lt;/p&gt;
@@ -1042,10 +1040,10 @@ c-16-25.333-24-45-24-59z&#39;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;/span&gt;&lt;/spa
             <title>Step.2 基本配置</title>
             <link>http://yunbaoj.github.io/2020/08/13/config/</link>
             <category term="计算机科学" scheme="http://yunbaoj.github.io/categories/computer-science/" />
-            <category term="二进制杂谈" scheme="http://yunbaoj.github.io/categories/computer-science/note/" />
-            <category term="Theme Shoka Documentation" scheme="http://yunbaoj.github.io/categories/computer-science/note/Theme-Shoka-Documentation/" />
-            <category term="H" scheme="http://yunbaoj.github.io/tags/H/" />
+            <category term="二进制杂谈" scheme="http://yunbaoj.github.io/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/" />
+            <category term="Theme Shoka Documentation" scheme="http://yunbaoj.github.io/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/Theme-Shoka-Documentation/" />
             <category term="教程" scheme="http://yunbaoj.github.io/tags/%E6%95%99%E7%A8%8B/" />
+            <category term="H" scheme="http://yunbaoj.github.io/tags/H/" />
             <pubDate>Thu, 13 Aug 2020 20:56:48 +0800</pubDate>
             <description><![CDATA[ &lt;div class=&#34;note primary&#34;&gt;
 &lt;p&gt;&lt;a href=&#34;/computer-science/note/theme-shoka-doc/&#34;&gt;🚀快速开始&lt;/a&gt; - &lt;a href=&#34;/computer-science/note/theme-shoka-doc/dependents/&#34;&gt;💌依赖插件&lt;/a&gt; - &lt;a href=&#34;/computer-science/note/theme-shoka-doc/config/&#34;&gt;&lt;strong&gt;📌基本配置&lt;/strong&gt;&lt;/a&gt; - &lt;a href=&#34;/computer-science/note/theme-shoka-doc/display/&#34;&gt;🌈界面显示&lt;/a&gt; - &lt;a href=&#34;/computer-science/note/theme-shoka-doc/special/&#34;&gt;🦄特殊功能&lt;/a&gt;&lt;/p&gt;
@@ -1204,10 +1202,10 @@ PS：jsDelivr 并不是实时更新，重新生成文件后需要耐心等待&lt
             <title>Step.1 依赖插件</title>
             <link>http://yunbaoj.github.io/2020/08/13/dependents/</link>
             <category term="计算机科学" scheme="http://yunbaoj.github.io/categories/computer-science/" />
-            <category term="二进制杂谈" scheme="http://yunbaoj.github.io/categories/computer-science/note/" />
-            <category term="Theme Shoka Documentation" scheme="http://yunbaoj.github.io/categories/computer-science/note/Theme-Shoka-Documentation/" />
-            <category term="教程" scheme="http://yunbaoj.github.io/tags/%E6%95%99%E7%A8%8B/" />
+            <category term="二进制杂谈" scheme="http://yunbaoj.github.io/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/" />
+            <category term="Theme Shoka Documentation" scheme="http://yunbaoj.github.io/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/Theme-Shoka-Documentation/" />
             <category term="Hexo" scheme="http://yunbaoj.github.io/tags/Hexo/" />
+            <category term="教程" scheme="http://yunbaoj.github.io/tags/%E6%95%99%E7%A8%8B/" />
             <pubDate>Thu, 13 Aug 2020 20:46:48 +0800</pubDate>
             <description><![CDATA[ &lt;div class=&#34;note primary&#34;&gt;
 &lt;p&gt;&lt;a href=&#34;/computer-science/note/theme-shoka-doc/&#34;&gt;🚀快速开始&lt;/a&gt; - &lt;a href=&#34;/computer-science/note/theme-shoka-doc/dependents/&#34;&gt;&lt;strong&gt;💌依赖插件&lt;/strong&gt;&lt;/a&gt; - &lt;a href=&#34;/computer-science/note/theme-shoka-doc/config/&#34;&gt;📌基本配置&lt;/a&gt; - &lt;a href=&#34;/computer-science/note/theme-shoka-doc/display/&#34;&gt;🌈界面显示&lt;/a&gt; - &lt;a href=&#34;/computer-science/note/theme-shoka-doc/special/&#34;&gt;🦄特殊功能&lt;/a&gt;&lt;/p&gt;
