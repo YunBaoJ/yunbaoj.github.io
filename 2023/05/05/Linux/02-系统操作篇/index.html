@@ -1,0 +1,755 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="云深不知归处" href="http://yunbaoj.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="云深不知归处" href="http://yunbaoj.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="云深不知归处" href="http://yunbaoj.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="http://yunbaoj.github.io/2023/05/05/Linux/02-%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C%E7%AF%87/">
+
+
+
+  <title>
+02-系统操作篇 - linux |
+Cloud’s blog = 云深不知归处 = May the world be closely tied with you.</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">02-系统操作篇
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2023-05-05 22:14:59">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-05-05T22:14:59+08:00">2023-05-05</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Cloud’s blog</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://gcore.jsdelivr.net/gh/lemonman1/pic/466f79e8ly1gznu5g74rdj21oi1ece83.jpg"></li>
+          <li class="item" data-background-image="https://gcore.jsdelivr.net/gh/lemonman1/pic/466f79e8ly1gzntkmoqvzj23342klx6q.jpg"></li>
+          <li class="item" data-background-image="https://gcore.jsdelivr.net/gh/lemonman1/pic/466f79e8ly1gznu0nhub5j21w81c84qs.jpg"></li>
+          <li class="item" data-background-image="https://gcore.jsdelivr.net/gh/lemonman1/pic/466f79e8ly1gznu8tk91hj21kw10ekjm.jpg"></li>
+          <li class="item" data-background-image="https://gcore.jsdelivr.net/gh/lemonman1/pic/466f79e8ly1gznu3w5cgaj240z1zfb2a.jpg"></li>
+          <li class="item" data-background-image="https://gcore.jsdelivr.net/gh/lemonman1/pic/466f79e8ly1gznu6orfk7j226h1tee83.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/linux/" itemprop="item" rel="index" title="分类于 linux"><span itemprop="name">linux</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh_CN">
+  <link itemprop="mainEntityOfPage" href="http://yunbaoj.github.io/2023/05/05/Linux/02-%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C%E7%AF%87/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="YunBao">
+    <meta itemprop="description" content="May the world be closely tied with you., This thing is most yearned for.">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="云深不知归处">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h2 id="系统管理篇1"><a class="anchor" href="#系统管理篇1">#</a> 系统管理篇（1）</h2>
+<ol a,b,c="">
+<li>
+<p>首次启动 Linux</p>
+<ul>
+<li>
+<p>root 用户</p>
+<p>超级管理员</p>
+<p>如果安装了图形界面的同学，在登录界面选择 &quot;未列出&quot;，用户名输入 &quot;root&quot;，输入密码即可使用 root 用户登录。</p>
+</li>
+<li>
+<p>提示符</p>
+<ul>
+<li>[root@localhost ~]#  工作目录</li>
+<li>$ 普通用户 - 在文件和权限上会受到一定约束和限制</li>
+<li># root 用户 - 在 linux 系统中不受任何约束和限制</li>
+</ul>
+</li>
+<li>
+<p>终端</p>
+<ul>
+<li>图形终端 / 命令行 (字符) 终端 / 远程终端 (SSH, VNC)</li>
+<li>如果安装了图形界面的同学，点击左上角应用程序 -&gt; 终端，输入命令:  <code>init 3</code></li>
+</ul>
+</li>
+<li>
+<p>系统常用目录介绍</p>
+<ul>
+<li>
+<p>/ 根目录</p>
+</li>
+<li>
+<p>/root root 用户家（Home）目录</p>
+</li>
+<li>
+<p>/home/username 其他用户家目录，<strong>注意</strong>这里 username 是指某个用户用户名</p>
+</li>
+<li>
+<p>/etc 配置文件目录</p>
+</li>
+<li>
+<p>/bin 命令目录</p>
+</li>
+<li>
+<p>/sbin 管理命令目录</p>
+</li>
+<li>
+<p>/usr/bin 和 /usr/sbin 系统预装的其他命令</p>
+</li>
+<li>
+<p>命令</p>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">ls</span> /</pre></td></tr></table></figure></li>
+<li>
+<p>关机</p>
+<p>服务器的理想状态是保障 365 * 7  * 24 小时处于正常运行</p>
+<p>但是我们实验学习环境是需要关机的，如下两个命令可关机</p>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre>init <span class="token number">0</span></pre></td></tr><tr><td data-num="2"></td><td><pre></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token function">shutdown</span> <span class="token parameter variable">-h</span> now</pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>帮助命令</p>
+<ul>
+<li>
+<p>为什么一定要熟悉帮助命令</p>
+<ul>
+<li>Linux 的基本操作方式是命令行</li>
+<li>海量的命令并不适合死记硬背</li>
+<li>升级你的大脑记忆方式（通过帮助命令学习更多命令，逐步融会贯通）</li>
+</ul>
+</li>
+<li>
+<p>man</p>
+<ul>
+<li>
+<p>manual 的缩写</p>
+</li>
+<li>
+<p>man 命令</p>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">man</span> <span class="token function">ls</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token comment"># 按 'q' 键退出文档</span></pre></td></tr></table></figure></li>
+<li>
+<p>当命令的文档非常多时，文档会按章分类，可以使用如下命令查看具体章</p>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">man</span> <span class="token number">7</span> <span class="token function">man</span> <span class="token comment"># 7 为章数</span></pre></td></tr></table></figure></li>
+<li>
+<p>？如何区分 passwd 命令和 /etc/passwd 配置文件的帮助</p>
+</li>
+</ul>
+</li>
+<li>
+<p>help</p>
+<ul>
+<li>
+<p>shell 自带的命令为内部命令，其他命令为外部命令</p>
+<ul>
+<li>可以使用 type 命令输出命令类型</li>
+</ul>
+</li>
+<li>
+<p>内部命令</p>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token builtin class-name">help</span> <span class="token builtin class-name">cd</span></pre></td></tr></table></figure></li>
+<li>
+<p>外部命令</p>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">ls</span> <span class="token parameter variable">--help</span></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>
+<p>info</p>
+<ul>
+<li>比 help 更详细，作为 help 的补充</li>
+</ul>
+</li>
+<li>
+<p>搜索引擎（包括官方文档）</p>
+</li>
+</ul>
+</li>
+<li>
+<p>文件管理</p>
+<ul>
+<li>
+<p>一切皆文件</p>
+</li>
+<li>
+<p>文件查看</p>
+<ul>
+<li>
+<p>pwd 显示当前的目录路径</p>
+<ul>
+<li>类似于 windows 的资源管理器</li>
+</ul>
+</li>
+<li>
+<p>ls 查看当前目录下的文件</p>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">ls</span> <span class="token punctuation">[</span>选项<span class="token punctuation">]</span> 文件名<span class="token punctuation">..</span>.</pre></td></tr></table></figure><ul>
+<li>常见选项
+<ul>
+<li>-l 长格式显示文件</li>
+<li>-a 显示隐藏文件
+<ul>
+<li>linux 中 '.' 开头的文件为隐藏文件，一般是比较重要的配置文件，防止用户误操作</li>
+</ul>
+</li>
+<li>-r 逆序排列，需要配合 - l 选项使用</li>
+<li>-t 按时间顺序，需要配合 - l 选项使用</li>
+<li>-R 递归显示</li>
+</ul>
+</li>
+<li>多个选项可以合并书写</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>cd 更改当前的工作目录</p>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token builtin class-name">cd</span> /path/to  <span class="token comment"># 绝对路径</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token builtin class-name">cd</span> ./path/to  <span class="token comment"># 相对路径，. 代表当前目录</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token builtin class-name">cd</span> path/to <span class="token comment"># 相对路径的简写方式</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token builtin class-name">cd</span> <span class="token punctuation">..</span>/path/to  <span class="token comment"># 相对路径，.. 代表当前目录的上一级目录</span></pre></td></tr></table></figure><ul>
+<li>
+<p>特殊用法</p>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token builtin class-name">cd</span> - <span class="token comment"># 回到上一次目录</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token builtin class-name">cd</span> <span class="token punctuation">..</span> <span class="token comment"># 回到上一级（父）目录</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token builtin class-name">cd</span> ~ <span class="token comment"># 回到用户家目录，也可以直接 cd</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token builtin class-name">cd</span> / <span class="token comment"># 进入根目录</span></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>
+<p>目录文件的创建、删除</p>
+<ul>
+<li>
+<p>mkdir</p>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">mkdir</span> /a</pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token function">mkdir</span> a <span class="token comment"># 上述两条命令的区别？</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token function">mkdir</span> b c d <span class="token comment">#同时创建多个目录</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token function">mkdir</span> a <span class="token comment"># 创建一个同名目录会发生什么？</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token function">mkdir</span> <span class="token parameter variable">-p</span> /a/b/c/d <span class="token comment"># 创建多级目录</span></pre></td></tr></table></figure></li>
+<li>
+<p>rmdir</p>
+<ul>
+<li>只能删除空目录 - 目录下不能有任何文件和子目录</li>
+<li>并不常用</li>
+</ul>
+</li>
+<li>
+<p>rm -r</p>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">rm</span> <span class="token parameter variable">-rf</span> /a</pre></td></tr></table></figure><p><strong>注意</strong>：执行 <code>rm -rf </code> 一定要认真检查后再执行 静默</p>
+</li>
+</ul>
+</li>
+<li>
+<p>文件操作</p>
+<ul>
+<li>
+<p>cp 复制</p>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">cp</span> <span class="token punctuation">[</span>选项<span class="token punctuation">]</span> 源路径 目标路径</pre></td></tr></table></figure><p>常见选项</p>
+<ul>
+<li>-r 复制目录</li>
+<li>-p 保留所有者、权限、时间等文件属性</li>
+</ul>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">cp</span> /etc/passwd /tmp</pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token function">cp</span> <span class="token parameter variable">-r</span> /root/a /tmp <span class="token comment"># 复制目录需要添加选项 a</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token function">cp</span> <span class="token parameter variable">-v</span> /etc/passwd /tmp <span class="token comment"># 显示复制过程，相当于进度条</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token function">cp</span> <span class="token parameter variable">-p</span> /etc/passwd /tmp <span class="token comment"># 复制并且保留文件属性（时间、所有者和属组）</span></pre></td></tr></table></figure></li>
+<li>
+<p>mv 移动 / 重命名</p>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">mv</span> filea fileb <span class="token comment"># 文件重命名</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token function">mv</span> fileb /tmp <span class="token comment"># 移动文件</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token function">mv</span> /tmp/fileb /filec <span class="token comment"># 移动和重命名同时完成</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token function">mv</span> /dirc /tmp <span class="token comment"># 移动目录</span></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>
+<p>通配符</p>
+<ul>
+<li>
+<p>*</p>
+<ul>
+<li>
+<p>匹配当前目录下所有文件和目录</p>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">cp</span> * /tmp <span class="token comment"># 复制当前目录下所有文件和目录到 /tmp 目录下</span></pre></td></tr></table></figure></li>
+<li>
+<p>匹配文件名中零个到多个字符</p>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">touch</span> <span class="token function">file</span> filea fileb filebb filec textc</pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token function">cp</span> <span class="token parameter variable">-v</span> file* /root/</pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>
+<p>? 匹配文件名中一个字符</p>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">cp</span> file? /tmp</pre></td></tr></table></figure></li>
+<li>
+<p>[xyz] 匹配 xyz 任意一个字符</p>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">ls</span> file<span class="token punctuation">[</span>ab<span class="token punctuation">]</span></pre></td></tr></table></figure></li>
+<li>
+<p>[a-z] 匹配一个范围</p>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">ls</span> file<span class="token punctuation">[</span>a-c<span class="token punctuation">]</span></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>
+<p>{}</p>
+<p>mkdir -p test/</p>
+</li>
+</ul>
+</li>
+</ol>
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2023-05-05 22:21:57" itemprop="dateModified" datetime="2023-05-05T22:21:57+08:00">2023-05-05</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 赞赏</button>
+  <p>请我喝[茶]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="YunBao 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="YunBao 支付宝">
+        <p>支付宝</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="YunBao 贝宝">
+        <p>贝宝</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>YunBao <i class="ic i-at"><em>@</em></i>云深不知归处
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://yunbaoj.github.io/2023/05/05/Linux/02-%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C%E7%AF%87/" title="02-系统操作篇">http://yunbaoj.github.io/2023/05/05/Linux/02-系统操作篇/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC96aF9DTg=="><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2023/05/05/Linux/06-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E7%AF%87-%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gcore.jsdelivr.net&#x2F;gh&#x2F;lemonman1&#x2F;pic&#x2F;466f79e8ly1gznu6orfk7j226h1tee83.jpg" title="06-系统管理篇-磁盘管理">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> linux</span>
+  <h3>06-系统管理篇-磁盘管理</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E7%AF%871"><span class="toc-number">1.</span> <span class="toc-text"> 系统管理篇（1）</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/2023/04/26/Linux/13-%E9%AB%98%E7%BA%A7%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91/" rel="bookmark" title="13-高级文本编辑sed">13-高级文本编辑sed</a></li><li><a href="/2023/05/05/Linux/05-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E7%AF%87-%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/" rel="bookmark" title="05-系统管理篇-网络管理">05-系统管理篇-网络管理</a></li><li><a href="/2023/05/05/Linux/07-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E7%AF%87-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/" rel="bookmark" title="07-系统管理篇-进程管理">07-系统管理篇-进程管理</a></li><li><a href="/2023/05/05/Linux/04-%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C%E7%AF%87-%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84%E7%AE%A1%E7%90%86/" rel="bookmark" title="04-系统操作篇-用户和组管理">04-系统操作篇-用户和组管理</a></li><li><a href="/2023/05/05/Linux/06-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E7%AF%87-%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/" rel="bookmark" title="06-系统管理篇-磁盘管理">06-系统管理篇-磁盘管理</a></li><li class="active"><a href="/2023/05/05/Linux/02-%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C%E7%AF%87/" rel="bookmark" title="02-系统操作篇">02-系统操作篇</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="YunBao"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">YunBao</p>
+  <div class="description" itemprop="description">This thing is most yearned for.</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">13</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">5</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">3</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL3l1bmJhb2o=" title="https:&#x2F;&#x2F;github.com&#x2F;yunbaoj"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPTE3OTY3MzQ0Mjc=" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;1796734427"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item about" data-url="aHR0cHM6Ly9hYm91dC5tZS94aWFveXVu" title="https:&#x2F;&#x2F;about.me&#x2F;xiaoyun"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>主页</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>关于</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>友链</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>links</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/blog/" title="分类于 blog">blog</a>
+</div>
+
+    <span><a href="/2023/05/02/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" title="第一篇博客">第一篇博客</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/blog/" title="分类于 blog">blog</a>
+</div>
+
+    <span><a href="/2023/05/02/hello-world/" title="Hello World">Hello World</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/05/02/%E6%B5%8B%E8%AF%95/" title="练习题与答案">练习题与答案</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/linux/" title="分类于 linux">linux</a>
+</div>
+
+    <span><a href="/2023/05/05/Linux/07-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E7%AF%87-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/" title="07-系统管理篇-进程管理">07-系统管理篇-进程管理</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/linux/" title="分类于 linux">linux</a>
+</div>
+
+    <span><a href="/2023/05/05/Linux/05-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E7%AF%87-%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/" title="05-系统管理篇-网络管理">05-系统管理篇-网络管理</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/" title="分类于 二进制杂谈">二进制杂谈</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/Theme-Shoka-Documentation/" title="分类于 Theme Shoka Documentation">Theme Shoka Documentation</a>
+</div>
+
+    <span><a href="/2020/08/13/special/" title="Step.4 主题特殊功能">Step.4 主题特殊功能</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/linux/" title="分类于 linux">linux</a>
+</div>
+
+    <span><a href="/2023/04/26/Linux/13-%E9%AB%98%E7%BA%A7%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91/" title="13-高级文本编辑sed">13-高级文本编辑sed</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/linux/" title="分类于 linux">linux</a>
+</div>
+
+    <span><a href="/2023/05/05/Linux/02-%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C%E7%AF%87/" title="02-系统操作篇">02-系统操作篇</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/linux/" title="分类于 linux">linux</a>
+</div>
+
+    <span><a href="/2023/05/05/Linux/06-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E7%AF%87-%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/" title="06-系统管理篇-磁盘管理">06-系统管理篇-磁盘管理</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/" title="分类于 二进制杂谈">二进制杂谈</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/Theme-Shoka-Documentation/" title="分类于 Theme Shoka Documentation">Theme Shoka Documentation</a>
+</div>
+
+    <span><a href="/2020/08/13/display/" title="Step.3 界面显示">Step.3 界面显示</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">YunBao @ Cloud’s blog</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2023/05/05/Linux/02-系统操作篇/',
+    favicon: {
+      show: "YunYun",
+      hide: "YunYun"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

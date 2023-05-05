@@ -1,0 +1,676 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="云深不知归处" href="http://yunbaoj.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="云深不知归处" href="http://yunbaoj.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="云深不知归处" href="http://yunbaoj.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="http://yunbaoj.github.io/2023/05/05/Linux/06-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E7%AF%87-%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/">
+
+
+
+  <title>
+06-系统管理篇-磁盘管理 - linux |
+Cloud’s blog = 云深不知归处 = May the world be closely tied with you.</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">06-系统管理篇-磁盘管理
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2023-05-05 22:14:56">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-05-05T22:14:56+08:00">2023-05-05</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Cloud’s blog</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://gcore.jsdelivr.net/gh/lemonman1/pic/466f79e8ly1gznu6orfk7j226h1tee83.jpg"></li>
+          <li class="item" data-background-image="https://gcore.jsdelivr.net/gh/lemonman1/pic/466f79e8ly1gznu0nhub5j21w81c84qs.jpg"></li>
+          <li class="item" data-background-image="https://gcore.jsdelivr.net/gh/lemonman1/pic/466f79e8ly1gzntkmoqvzj23342klx6q.jpg"></li>
+          <li class="item" data-background-image="https://gcore.jsdelivr.net/gh/lemonman1/pic/466f79e8ly1gznu5g74rdj21oi1ece83.jpg"></li>
+          <li class="item" data-background-image="https://gcore.jsdelivr.net/gh/lemonman1/pic/466f79e8ly1gznu8tk91hj21kw10ekjm.jpg"></li>
+          <li class="item" data-background-image="https://gcore.jsdelivr.net/gh/lemonman1/pic/466f79e8ly1gznu3w5cgaj240z1zfb2a.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/linux/" itemprop="item" rel="index" title="分类于 linux"><span itemprop="name">linux</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh_CN">
+  <link itemprop="mainEntityOfPage" href="http://yunbaoj.github.io/2023/05/05/Linux/06-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E7%AF%87-%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="YunBao">
+    <meta itemprop="description" content="May the world be closely tied with you., This thing is most yearned for.">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="云深不知归处">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h2 id="系统管理篇2-磁盘管理"><a class="anchor" href="#系统管理篇2-磁盘管理">#</a> 系统管理篇（2）- 磁盘管理</h2>
+<h3 id="一-磁盘使用监控"><a class="anchor" href="#一-磁盘使用监控">#</a> 一、磁盘使用监控</h3>
+<h4 id="1-查看命令"><a class="anchor" href="#1-查看命令">#</a> 1. 查看命令</h4>
+<ul>
+<li>
+<p>fdisk</p>
+<p>既可以查询磁盘信息，又可以进行磁盘分区；</p>
+<p>磁盘设备是块设备，不要去修改其权限；</p>
+<p>自行学习 <code>parted</code>  命令。</p>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">fdisk</span> <span class="token parameter variable">-l</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token function">fdisk</span> <span class="token parameter variable">-l</span> /dev/sd? <span class="token comment"># 查看磁盘</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token function">fdisk</span> <span class="token parameter variable">-l</span> /dev/sd?? <span class="token comment"># 查看分区</span></pre></td></tr></table></figure></li>
+<li>
+<p>df</p>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">df</span> <span class="token parameter variable">-Th</span></pre></td></tr></table></figure></li>
+<li>
+<p>du</p>
+<p>文件实际占用的空间</p>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment"># 两个查看文件大小的区别</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token function">ls</span> <span class="token parameter variable">-lh</span> /etc/passwd <span class="token comment"># 包含了空洞文件的大小</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token function">du</span> <span class="token parameter variable">-h</span> /etc/passwd <span class="token comment"># 文件实际大小</span></pre></td></tr><tr><td data-num="4"></td><td><pre></pre></td></tr><tr><td data-num="5"></td><td><pre></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token comment"># 实验：</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token function">dd</span> <span class="token assign-left variable">if</span><span class="token operator">=</span>/dev/zero <span class="token assign-left variable">bs</span><span class="token operator">=</span>4M <span class="token assign-left variable">count</span><span class="token operator">=</span><span class="token number">10</span> <span class="token assign-left variable">of</span><span class="token operator">=</span>afile</pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token function">ls</span> <span class="token parameter variable">-lh</span> afile</pre></td></tr><tr><td data-num="9"></td><td><pre><span class="token function">du</span> <span class="token parameter variable">-h</span> afile</pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token comment"># 都是 40M</span></pre></td></tr><tr><td data-num="11"></td><td><pre><span class="token comment"># 创建空洞文件</span></pre></td></tr><tr><td data-num="12"></td><td><pre><span class="token function">dd</span> <span class="token assign-left variable">if</span><span class="token operator">=</span>/dev/zero <span class="token assign-left variable">bs</span><span class="token operator">=</span>4M <span class="token assign-left variable">count</span><span class="token operator">=</span><span class="token number">10</span> <span class="token assign-left variable">seek</span><span class="token operator">=</span><span class="token number">10</span> <span class="token assign-left variable">of</span><span class="token operator">=</span>bfile</pre></td></tr><tr><td data-num="13"></td><td><pre><span class="token function">ls</span> <span class="token parameter variable">-lh</span> bfile <span class="token comment"># 说明了什么？ls 测量的是包含了空洞的文件大小</span></pre></td></tr><tr><td data-num="14"></td><td><pre><span class="token function">du</span> <span class="token parameter variable">-h</span> bfile <span class="token comment"># 说明了什么？du 测量的是文件有数据的实际大小</span></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="二-文件系统"><a class="anchor" href="#二-文件系统">#</a> 二、文件系统</h3>
+<h4 id="1-文件系统类型"><a class="anchor" href="#1-文件系统类型">#</a> 1. 文件系统类型</h4>
+<p>Linux ⽀持多种⽂件系统，常⻅的有</p>
+<ul>
+<li>ext4</li>
+<li>xfs</li>
+<li>NTFS
+<ul>
+<li>需要安装额外软件</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-深入linux文件"><a class="anchor" href="#2-深入linux文件">#</a> 2. 深入 Linux 文件</h4>
+<p>ext4 文件系统基本结构比较复杂</p>
+<ul>
+<li>
+<p>超级块</p>
+<ul>
+<li>文件系统最前面部分 - 分区中有多少文件</li>
+</ul>
+</li>
+<li>
+<p>超级块副本</p>
+<ul>
+<li>超级块的副本 - 用于恢复</li>
+</ul>
+</li>
+<li>
+<p>i 节点</p>
+<ul>
+<li>记录每个文件元数据信息 - 文件名，大小，编号，权限</li>
+<li>文件名记录在文件的父目录的 i 节点中</li>
+</ul>
+</li>
+<li>
+<p>数据块</p>
+<ul>
+<li>文件对应的真正数据 - 普通文件就其存放的数据；目录就是去其中存放的 i 节点信息</li>
+<li>链式存储</li>
+</ul>
+</li>
+</ul>
+<p>ext4 ⽂件系统深⼊理解</p>
+<ul>
+<li>
+<p>执⾏ mkdir 、touch、 vi 等命令后的内部操作</p>
+</li>
+<li>
+<p>符号链接与硬链接</p>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">ls</span> <span class="token parameter variable">-l</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token function">ls</span> <span class="token parameter variable">-i</span> <span class="token comment"># 查看到 i 节点编号</span></pre></td></tr><tr><td data-num="3"></td><td><pre></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token function">touch</span> afile</pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token function">ls</span> <span class="token parameter variable">-li</span> afile <span class="token comment"># 大小 0 代表什么？</span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token function">du</span> <span class="token parameter variable">-h</span> afile</pre></td></tr><tr><td data-num="7"></td><td><pre></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token builtin class-name">echo</span> <span class="token number">123</span> <span class="token operator">></span> afile</pre></td></tr><tr><td data-num="9"></td><td><pre><span class="token function">ls</span> <span class="token parameter variable">-li</span> afile </pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token function">du</span> <span class="token parameter variable">-h</span> afile <span class="token comment"># 大小代表什么？</span></pre></td></tr><tr><td data-num="11"></td><td><pre></pre></td></tr><tr><td data-num="12"></td><td><pre><span class="token function">cp</span> afile afile2</pre></td></tr><tr><td data-num="13"></td><td><pre><span class="token function">ls</span> <span class="token parameter variable">-li</span> afile* <span class="token comment"># 观察 i 节点编号，代表什么？</span></pre></td></tr><tr><td data-num="14"></td><td><pre></pre></td></tr><tr><td data-num="15"></td><td><pre><span class="token function">mv</span> afile2 afile3</pre></td></tr><tr><td data-num="16"></td><td><pre><span class="token function">ls</span> <span class="token parameter variable">-li</span> afile* <span class="token comment"># 观察 i 节点编号，代表什么？</span></pre></td></tr><tr><td data-num="17"></td><td><pre></pre></td></tr><tr><td data-num="18"></td><td><pre><span class="token function">vi</span> afile4 <span class="token comment"># 写入内容，保存退出</span></pre></td></tr><tr><td data-num="19"></td><td><pre><span class="token function">ls</span> <span class="token parameter variable">-li</span> afile4</pre></td></tr><tr><td data-num="20"></td><td><pre><span class="token function">vi</span> afile4 <span class="token comment"># 修改</span></pre></td></tr><tr><td data-num="21"></td><td><pre><span class="token function">ls</span> <span class="token parameter variable">-li</span> afile4 <span class="token comment"># 观察 i 节点编号，代表什么？</span></pre></td></tr><tr><td data-num="22"></td><td><pre></pre></td></tr><tr><td data-num="23"></td><td><pre><span class="token function">rm</span> afile4</pre></td></tr><tr><td data-num="24"></td><td><pre><span class="token comment"># i 节点和文件名断开</span></pre></td></tr><tr><td data-num="25"></td><td><pre></pre></td></tr><tr><td data-num="26"></td><td><pre><span class="token function">ln</span> afile bfile</pre></td></tr><tr><td data-num="27"></td><td><pre><span class="token function">ls</span> <span class="token parameter variable">-li</span> afile bfile <span class="token comment"># 观察 i 节点编号</span></pre></td></tr><tr><td data-num="28"></td><td><pre><span class="token comment"># 硬链接不能跨越分区</span></pre></td></tr><tr><td data-num="29"></td><td><pre></pre></td></tr><tr><td data-num="30"></td><td><pre><span class="token function">ln</span> <span class="token parameter variable">-s</span> afile aafile </pre></td></tr><tr><td data-num="31"></td><td><pre><span class="token function">ls</span> <span class="token parameter variable">-li</span> afile aafile <span class="token comment"># 观察 i 节点编号，文件权限</span></pre></td></tr><tr><td data-num="32"></td><td><pre><span class="token comment"># 软链接能跨越分区</span></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="三-磁盘管理"><a class="anchor" href="#三-磁盘管理">#</a> 三、磁盘管理</h3>
+<h4 id="1-磁盘分区"><a class="anchor" href="#1-磁盘分区">#</a> 1. 磁盘分区</h4>
+<ul>
+<li>
+<p>常用命令</p>
+<ul>
+<li>fdisk</li>
+</ul>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment"># 在虚拟机中添加磁盘</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token function">fdisk</span> <span class="token parameter variable">-l</span> <span class="token comment"># 查看新加磁盘</span></pre></td></tr><tr><td data-num="3"></td><td><pre></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token function">fdisk</span> /dev/sdb <span class="token comment"># 以具体磁盘为准</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token comment"># 交互式命令</span></pre></td></tr><tr><td data-num="6"></td><td><pre>m <span class="token comment"># 帮助</span></pre></td></tr><tr><td data-num="7"></td><td><pre>n <span class="token comment"># 新建</span></pre></td></tr><tr><td data-num="8"></td><td><pre>p <span class="token comment"># 主分区</span></pre></td></tr><tr><td data-num="9"></td><td><pre><span class="token number">1</span> <span class="token comment"># 分区</span></pre></td></tr><tr><td data-num="10"></td><td><pre>回车 <span class="token comment"># 开始扇区</span></pre></td></tr><tr><td data-num="11"></td><td><pre>+5G <span class="token comment"># 结束扇区，如果占用剩余所有，直接敲回车</span></pre></td></tr><tr><td data-num="12"></td><td><pre></pre></td></tr><tr><td data-num="13"></td><td><pre>p <span class="token comment"># 查看分区</span></pre></td></tr><tr><td data-num="14"></td><td><pre>d <span class="token comment"># 删除分区</span></pre></td></tr><tr><td data-num="15"></td><td><pre>q <span class="token comment"># 不保存退出</span></pre></td></tr><tr><td data-num="16"></td><td><pre>w <span class="token comment"># 保存退出</span></pre></td></tr></table></figure><ul>
+<li>mkfs</li>
+</ul>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre>mkfs.</pre></td></tr><tr><td data-num="2"></td><td><pre></pre></td></tr><tr><td data-num="3"></td><td><pre>mkfs.xfs /dev/sdb1 <span class="token comment"># 以具体磁盘分区为准</span></pre></td></tr></table></figure><ul>
+<li>parted
+<ul>
+<li>磁盘大于 2T</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-挂载"><a class="anchor" href="#2-挂载">#</a> 2. 挂载</h4>
+<ul>
+<li>
+<p>常用命令</p>
+<ul>
+<li>mount</li>
+</ul>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">mkdir</span> /mnt/test</pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token function">mount</span> <span class="token parameter variable">-t</span> xfs /dev/sdb1 /mnt/test</pre></td></tr><tr><td data-num="3"></td><td><pre></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token function">mount</span></pre></td></tr></table></figure></li>
+<li>
+<p>配置文件</p>
+<ul>
+<li>/etc/fstab</li>
+</ul>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">vi</span> /etcfstab</pre></td></tr><tr><td data-num="2"></td><td><pre>/dev/sdb1 /mnt/test xfs          defaults    <span class="token number">0</span>    <span class="token number">0</span></pre></td></tr><tr><td data-num="3"></td><td><pre>分区       挂载点     文件系统类型   权限        备份  自检</pre></td></tr></table></figure></li>
+</ul>
+<h4 id="3-磁盘配额"><a class="anchor" href="#3-磁盘配额">#</a> 3. 磁盘配额</h4>
+<p>xfs 文件系统的用户磁盘配额 quota</p>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre>mkfs.xfs /etc/sdb1</pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token function">mkdir</span> /mnt/disk1</pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token function">mount</span> <span class="token parameter variable">-o</span> uquota,gquota /dev/sdb1 /mnt/disk1</pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token function">chmod</span> <span class="token number">1777</span> /mnt/disk1 <span class="token comment"># 特殊权限，1 代表粘性位，作用是只有创建者和 root 可以删除</span></pre></td></tr><tr><td data-num="5"></td><td><pre>xfs_quota <span class="token parameter variable">-x</span> <span class="token parameter variable">-c</span> <span class="token string">'report -ugibh'</span> /mnt/disk1 <span class="token comment"># i-inode b-block h - 人性化显示</span></pre></td></tr><tr><td data-num="6"></td><td><pre>xfs_quota <span class="token parameter variable">-x</span> <span class="token parameter variable">-c</span> <span class="token string">'limit -u isoft=5 ihard=10 用户名'</span> /mnt/disk1</pre></td></tr></table></figure><ul>
+<li>soft 软限制：超过软限制只警告，给予一个宽限时间，宽限时间内不影响使用</li>
+<li>hard 硬限制：绝对不能超过配额</li>
+</ul>
+<h3 id="四-raid"><a class="anchor" href="#四-raid">#</a> 四、RAID</h3>
+<h4 id="1-raid基本概念"><a class="anchor" href="#1-raid基本概念">#</a> 1. RAID 基本概念</h4>
+<p>RAID 的常见级别及含义</p>
+<ul>
+<li>RAID0 striping 条带方式，提高单盘吞吐率</li>
+<li>RAID1 mirroring 镜像⽅式，提⾼可靠性</li>
+<li>RAID5 有奇偶校验</li>
+<li>RAID10 RAID 1 与 RAID 0 的结合</li>
+</ul>
+<h4 id="2-软件raid配置"><a class="anchor" href="#2-软件raid配置">#</a> 2. 软件 RAID 配置</h4>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre>yum <span class="token function">install</span> <span class="token parameter variable">-y</span> <span class="token function">mdadm</span></pre></td></tr><tr><td data-num="2"></td><td><pre></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token comment"># 事先准备好三个新磁盘分区（也可以直接针对磁盘），同样大小</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token comment"># sdb1 sdc1</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token comment"># RAID1</span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token function">mdadm</span> <span class="token parameter variable">-C</span> /dev/md0 <span class="token parameter variable">-a</span> <span class="token function">yes</span>  <span class="token parameter variable">-l1</span> <span class="token parameter variable">-n2</span> /dev/sd<span class="token punctuation">[</span>b,c<span class="token punctuation">]</span><span class="token number">1</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token comment"># 查看</span></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token function">mdadm</span> <span class="token parameter variable">-D</span> /dev/md0</pre></td></tr><tr><td data-num="9"></td><td><pre><span class="token comment"># 追加配置信息到配置文件，下次开机才会自动创建软件 RAID </span></pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token comment"># 实验不建议设置</span></pre></td></tr><tr><td data-num="11"></td><td><pre><span class="token comment"># echo DEVICE /dev/sd[b,c]1 >> /etc/mdadm.conf</span></pre></td></tr><tr><td data-num="12"></td><td><pre><span class="token comment"># mdadm -Evs >> /etc/mdadm.conf</span></pre></td></tr><tr><td data-num="13"></td><td><pre><span class="token comment"># 格式化 也可以像普通磁盘一样划分分区后再格式化</span></pre></td></tr><tr><td data-num="14"></td><td><pre>mkfs.xfs /dev/md0</pre></td></tr><tr><td data-num="15"></td><td><pre></pre></td></tr><tr><td data-num="16"></td><td><pre><span class="token comment"># 破坏 RAID，使底层磁盘分区可以再重用</span></pre></td></tr><tr><td data-num="17"></td><td><pre><span class="token comment"># 先停止 RAID 工作</span></pre></td></tr><tr><td data-num="18"></td><td><pre><span class="token function">mdadm</span> <span class="token parameter variable">--stop</span> /dev/md0</pre></td></tr><tr><td data-num="19"></td><td><pre><span class="token comment"># 再破坏超级块</span></pre></td></tr><tr><td data-num="20"></td><td><pre><span class="token function">dd</span> <span class="token assign-left variable">if</span><span class="token operator">=</span>/dev/zero <span class="token assign-left variable">of</span><span class="token operator">=</span>/dev/sdb1 <span class="token assign-left variable">bs</span><span class="token operator">=</span>1M <span class="token assign-left variable">count</span><span class="token operator">=</span><span class="token number">1</span></pre></td></tr><tr><td data-num="21"></td><td><pre><span class="token function">dd</span> <span class="token assign-left variable">if</span><span class="token operator">=</span>/dev/zero <span class="token assign-left variable">of</span><span class="token operator">=</span>/dev/sdc1 <span class="token assign-left variable">bs</span><span class="token operator">=</span>1M <span class="token assign-left variable">count</span><span class="token operator">=</span><span class="token number">1</span></pre></td></tr><tr><td data-num="22"></td><td><pre></pre></td></tr><tr><td data-num="23"></td><td><pre><span class="token comment"># 自行尝试做 RAID5</span></pre></td></tr></table></figure><h3 id="五-逻辑卷管理"><a class="anchor" href="#五-逻辑卷管理">#</a> 五、逻辑卷管理</h3>
+<h4 id="1-逻辑卷基本概念"><a class="anchor" href="#1-逻辑卷基本概念">#</a> 1. 逻辑卷基本概念</h4>
+<p>逻辑卷和文件系统的关系</p>
+<h4 id="2-创建逻辑卷"><a class="anchor" href="#2-创建逻辑卷">#</a> 2. 创建逻辑卷</h4>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment"># 1. 添加硬盘</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token function">fdisk</span> <span class="token parameter variable">-l</span> sd??</pre></td></tr><tr><td data-num="3"></td><td><pre></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token comment"># 2. 创建物理卷</span></pre></td></tr><tr><td data-num="5"></td><td><pre>pvcreate /dev/sd<span class="token punctuation">[</span>b,c<span class="token punctuation">]</span><span class="token number">1</span></pre></td></tr><tr><td data-num="6"></td><td><pre>pvs</pre></td></tr><tr><td data-num="7"></td><td><pre></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token comment"># 3. 创建卷组</span></pre></td></tr><tr><td data-num="9"></td><td><pre>vgcreate vg1 /dev/sd<span class="token punctuation">[</span>b,c<span class="token punctuation">]</span><span class="token number">1</span></pre></td></tr><tr><td data-num="10"></td><td><pre>pvs</pre></td></tr><tr><td data-num="11"></td><td><pre>vgs</pre></td></tr><tr><td data-num="12"></td><td><pre></pre></td></tr><tr><td data-num="13"></td><td><pre><span class="token comment"># 4. 创建逻辑卷</span></pre></td></tr><tr><td data-num="14"></td><td><pre>lvcreate <span class="token parameter variable">-L</span> 30M <span class="token parameter variable">-n</span> lv1 vg1</pre></td></tr><tr><td data-num="15"></td><td><pre>lvs</pre></td></tr><tr><td data-num="16"></td><td><pre>vgs</pre></td></tr><tr><td data-num="17"></td><td><pre></pre></td></tr><tr><td data-num="18"></td><td><pre><span class="token comment"># 5. 使用</span></pre></td></tr><tr><td data-num="19"></td><td><pre><span class="token function">mkdir</span> /mnt/test</pre></td></tr><tr><td data-num="20"></td><td><pre>mkfs.xfs /dev/vg1/lv1</pre></td></tr><tr><td data-num="21"></td><td><pre><span class="token function">mount</span> /dev/vg1/lv1 /mnt/test</pre></td></tr></table></figure><h4 id="3-动态扩容"><a class="anchor" href="#3-动态扩容">#</a> 3. 动态扩容</h4>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment"># /dev/sdd1 是 PV 名，不是磁盘名和分区名</span></pre></td></tr><tr><td data-num="2"></td><td><pre>vgextend vg1 /dev/sdd1</pre></td></tr><tr><td data-num="3"></td><td><pre>vgs</pre></td></tr><tr><td data-num="4"></td><td><pre>lvs</pre></td></tr><tr><td data-num="5"></td><td><pre></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token comment"># /dev/vg1/lv1 是 LV 名</span></pre></td></tr><tr><td data-num="7"></td><td><pre>lvextend <span class="token parameter variable">-L</span> +20G /dev/vg1/lv1</pre></td></tr><tr><td data-num="8"></td><td><pre>lvs</pre></td></tr><tr><td data-num="9"></td><td><pre></pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token function">df</span> <span class="token parameter variable">-h</span></pre></td></tr><tr><td data-num="11"></td><td><pre>xfs_growfs /dev/vg1/lv1</pre></td></tr></table></figure><ol start="4">
+<li>
+<h4 id="删除lvm"><a class="anchor" href="#删除lvm">#</a> 删除 LVM</h4>
+</li>
+</ol>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment"># 删除 lv</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token comment"># 如果 lv 已经挂载，需要先 umount 取消挂载</span></pre></td></tr><tr><td data-num="3"></td><td><pre>lvremove /dev/vg1/lv1</pre></td></tr><tr><td data-num="4"></td><td><pre></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token comment"># 删除 vg</span></pre></td></tr><tr><td data-num="6"></td><td><pre>vgremove vg1</pre></td></tr><tr><td data-num="7"></td><td><pre></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token comment"># 删除 pv</span></pre></td></tr><tr><td data-num="9"></td><td><pre>pvremove /dev/sd<span class="token punctuation">[</span>b,c<span class="token punctuation">]</span><span class="token number">1</span></pre></td></tr></table></figure>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2023-05-05 22:23:44" itemprop="dateModified" datetime="2023-05-05T22:23:44+08:00">2023-05-05</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 赞赏</button>
+  <p>请我喝[茶]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="YunBao 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="YunBao 支付宝">
+        <p>支付宝</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="YunBao 贝宝">
+        <p>贝宝</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>YunBao <i class="ic i-at"><em>@</em></i>云深不知归处
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://yunbaoj.github.io/2023/05/05/Linux/06-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E7%AF%87-%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/" title="06-系统管理篇-磁盘管理">http://yunbaoj.github.io/2023/05/05/Linux/06-系统管理篇-磁盘管理/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC96aF9DTg=="><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2023/05/05/Linux/04-%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C%E7%AF%87-%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84%E7%AE%A1%E7%90%86/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gcore.jsdelivr.net&#x2F;gh&#x2F;lemonman1&#x2F;pic&#x2F;466f79e8ly1gzntkmoqvzj23342klx6q.jpg" title="04-系统操作篇-用户和组管理">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> linux</span>
+  <h3>04-系统操作篇-用户和组管理</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2023/05/05/Linux/02-%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C%E7%AF%87/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gcore.jsdelivr.net&#x2F;gh&#x2F;lemonman1&#x2F;pic&#x2F;466f79e8ly1gznu0nhub5j21w81c84qs.jpg" title="02-系统操作篇">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> linux</span>
+  <h3>02-系统操作篇</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E7%AF%872-%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text"> 系统管理篇（2）- 磁盘管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-%E7%A3%81%E7%9B%98%E4%BD%BF%E7%94%A8%E7%9B%91%E6%8E%A7"><span class="toc-number">1.1.</span> <span class="toc-text"> 一、磁盘使用监控</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%9F%A5%E7%9C%8B%E5%91%BD%E4%BB%A4"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 1. 查看命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.2.</span> <span class="toc-text"> 二、文件系统</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 1. 文件系统类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%B7%B1%E5%85%A5linux%E6%96%87%E4%BB%B6"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 2. 深入 Linux 文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89-%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86"><span class="toc-number">1.3.</span> <span class="toc-text"> 三、磁盘管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 1. 磁盘分区</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%8C%82%E8%BD%BD"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 2. 挂载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E7%A3%81%E7%9B%98%E9%85%8D%E9%A2%9D"><span class="toc-number">1.3.3.</span> <span class="toc-text"> 3. 磁盘配额</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B-raid"><span class="toc-number">1.4.</span> <span class="toc-text"> 四、RAID</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-raid%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.4.1.</span> <span class="toc-text"> 1. RAID 基本概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%BD%AF%E4%BB%B6raid%E9%85%8D%E7%BD%AE"><span class="toc-number">1.4.2.</span> <span class="toc-text"> 2. 软件 RAID 配置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94-%E9%80%BB%E8%BE%91%E5%8D%B7%E7%AE%A1%E7%90%86"><span class="toc-number">1.5.</span> <span class="toc-text"> 五、逻辑卷管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E9%80%BB%E8%BE%91%E5%8D%B7%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.5.1.</span> <span class="toc-text"> 1. 逻辑卷基本概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%88%9B%E5%BB%BA%E9%80%BB%E8%BE%91%E5%8D%B7"><span class="toc-number">1.5.2.</span> <span class="toc-text"> 2. 创建逻辑卷</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%8A%A8%E6%80%81%E6%89%A9%E5%AE%B9"><span class="toc-number">1.5.3.</span> <span class="toc-text"> 3. 动态扩容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4lvm"><span class="toc-number">1.5.4.</span> <span class="toc-text"> 删除 LVM</span></a></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/2023/04/26/Linux/13-%E9%AB%98%E7%BA%A7%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91/" rel="bookmark" title="13-高级文本编辑sed">13-高级文本编辑sed</a></li><li><a href="/2023/05/05/Linux/05-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E7%AF%87-%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/" rel="bookmark" title="05-系统管理篇-网络管理">05-系统管理篇-网络管理</a></li><li><a href="/2023/05/05/Linux/07-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E7%AF%87-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/" rel="bookmark" title="07-系统管理篇-进程管理">07-系统管理篇-进程管理</a></li><li><a href="/2023/05/05/Linux/04-%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C%E7%AF%87-%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84%E7%AE%A1%E7%90%86/" rel="bookmark" title="04-系统操作篇-用户和组管理">04-系统操作篇-用户和组管理</a></li><li class="active"><a href="/2023/05/05/Linux/06-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E7%AF%87-%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/" rel="bookmark" title="06-系统管理篇-磁盘管理">06-系统管理篇-磁盘管理</a></li><li><a href="/2023/05/05/Linux/02-%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C%E7%AF%87/" rel="bookmark" title="02-系统操作篇">02-系统操作篇</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="YunBao"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">YunBao</p>
+  <div class="description" itemprop="description">This thing is most yearned for.</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">13</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">5</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">3</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL3l1bmJhb2o=" title="https:&#x2F;&#x2F;github.com&#x2F;yunbaoj"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPTE3OTY3MzQ0Mjc=" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;1796734427"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item about" data-url="aHR0cHM6Ly9hYm91dC5tZS94aWFveXVu" title="https:&#x2F;&#x2F;about.me&#x2F;xiaoyun"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>主页</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>关于</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>友链</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>links</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2023/05/05/Linux/04-%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C%E7%AF%87-%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84%E7%AE%A1%E7%90%86/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2023/05/05/Linux/02-%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C%E7%AF%87/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/" title="分类于 二进制杂谈">二进制杂谈</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/Theme-Shoka-Documentation/" title="分类于 Theme Shoka Documentation">Theme Shoka Documentation</a>
+</div>
+
+    <span><a href="/2020/08/13/display/" title="Step.3 界面显示">Step.3 界面显示</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/linux/" title="分类于 linux">linux</a>
+</div>
+
+    <span><a href="/2023/05/05/Linux/07-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E7%AF%87-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/" title="07-系统管理篇-进程管理">07-系统管理篇-进程管理</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/linux/" title="分类于 linux">linux</a>
+</div>
+
+    <span><a href="/2023/05/05/Linux/05-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E7%AF%87-%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/" title="05-系统管理篇-网络管理">05-系统管理篇-网络管理</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/blog/" title="分类于 blog">blog</a>
+</div>
+
+    <span><a href="/2023/05/02/hello-world/" title="Hello World">Hello World</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/" title="分类于 二进制杂谈">二进制杂谈</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/Theme-Shoka-Documentation/" title="分类于 Theme Shoka Documentation">Theme Shoka Documentation</a>
+</div>
+
+    <span><a href="/2020/08/13/special/" title="Step.4 主题特殊功能">Step.4 主题特殊功能</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/blog/" title="分类于 blog">blog</a>
+</div>
+
+    <span><a href="/2023/05/02/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" title="第一篇博客">第一篇博客</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/linux/" title="分类于 linux">linux</a>
+</div>
+
+    <span><a href="/2023/05/05/Linux/02-%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C%E7%AF%87/" title="02-系统操作篇">02-系统操作篇</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/" title="分类于 二进制杂谈">二进制杂谈</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/Theme-Shoka-Documentation/" title="分类于 Theme Shoka Documentation">Theme Shoka Documentation</a>
+</div>
+
+    <span><a href="/2020/08/13/dependents/" title="Step.1 依赖插件">Step.1 依赖插件</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/" title="分类于 二进制杂谈">二进制杂谈</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/Theme-Shoka-Documentation/" title="分类于 Theme Shoka Documentation">Theme Shoka Documentation</a>
+</div>
+
+    <span><a href="/2020/08/13/config/" title="Step.2 基本配置">Step.2 基本配置</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/linux/" title="分类于 linux">linux</a>
+</div>
+
+    <span><a href="/2023/04/26/Linux/13-%E9%AB%98%E7%BA%A7%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91/" title="13-高级文本编辑sed">13-高级文本编辑sed</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">YunBao @ Cloud’s blog</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2023/05/05/Linux/06-系统管理篇-磁盘管理/',
+    favicon: {
+      show: "YunYun",
+      hide: "YunYun"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

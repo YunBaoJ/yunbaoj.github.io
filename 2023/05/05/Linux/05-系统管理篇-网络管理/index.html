@@ -1,0 +1,707 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="云深不知归处" href="http://yunbaoj.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="云深不知归处" href="http://yunbaoj.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="云深不知归处" href="http://yunbaoj.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="http://yunbaoj.github.io/2023/05/05/Linux/05-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E7%AF%87-%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/">
+
+
+
+  <title>
+05-系统管理篇-网络管理 - linux |
+Cloud’s blog = 云深不知归处 = May the world be closely tied with you.</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">05-系统管理篇-网络管理
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2023-05-05 22:14:54">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-05-05T22:14:54+08:00">2023-05-05</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Cloud’s blog</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://gcore.jsdelivr.net/gh/lemonman1/pic/466f79e8ly1gznu0nhub5j21w81c84qs.jpg"></li>
+          <li class="item" data-background-image="https://gcore.jsdelivr.net/gh/lemonman1/pic/466f79e8ly1gznu8tk91hj21kw10ekjm.jpg"></li>
+          <li class="item" data-background-image="https://gcore.jsdelivr.net/gh/lemonman1/pic/466f79e8ly1gznu3w5cgaj240z1zfb2a.jpg"></li>
+          <li class="item" data-background-image="https://gcore.jsdelivr.net/gh/lemonman1/pic/466f79e8ly1gznu5g74rdj21oi1ece83.jpg"></li>
+          <li class="item" data-background-image="https://gcore.jsdelivr.net/gh/lemonman1/pic/466f79e8ly1gzntkmoqvzj23342klx6q.jpg"></li>
+          <li class="item" data-background-image="https://gcore.jsdelivr.net/gh/lemonman1/pic/466f79e8ly1gznu6orfk7j226h1tee83.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/linux/" itemprop="item" rel="index" title="分类于 linux"><span itemprop="name">linux</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh_CN">
+  <link itemprop="mainEntityOfPage" href="http://yunbaoj.github.io/2023/05/05/Linux/05-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E7%AF%87-%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="YunBao">
+    <meta itemprop="description" content="May the world be closely tied with you., This thing is most yearned for.">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="云深不知归处">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h2 id="系统管理篇1"><a class="anchor" href="#系统管理篇1">#</a> 系统管理篇（1）</h2>
+<h4 id="一-查看网络状态"><a class="anchor" href="#一-查看网络状态">#</a> 一、查看网络状态</h4>
+<h5 id="1-网络接口网卡命名"><a class="anchor" href="#1-网络接口网卡命名">#</a> 1. 网络接口（网卡）命名</h5>
+<ul>
+<li>板载网卡 eno1</li>
+<li>PCI-E 网卡 ens33</li>
+<li>无法获取物理信息的 PCI-E 网卡 enp0s3</li>
+<li>CentOS7 使用一致性网络设备命名，当上面都不匹配使用 eth0</li>
+<li>网络接口命名可以通过修改 grub 文件中的 <code> biosdevname</code>  和 <code> net.ifnames</code>  两个参数进行修改</li>
+</ul>
+<h5 id="2-网络工具包"><a class="anchor" href="#2-网络工具包">#</a> 2. 网络工具包</h5>
+<ul>
+<li>net-tools 包：ifconfig、route、netstate</li>
+<li>iproute2 包：ip、ss</li>
+</ul>
+<h5 id="3-查看网络接口状态"><a class="anchor" href="#3-查看网络接口状态">#</a> 3. 查看网络接口状态</h5>
+<ul>
+<li>ip 命令</li>
+</ul>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">ip</span> addr <span class="token function">ls</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token function">ip</span> a <span class="token comment"># 简写</span></pre></td></tr><tr><td data-num="3"></td><td><pre></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token comment"># 对照的 ifconfig 命令</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token function">ifconfig</span></pre></td></tr></table></figure><h5 id="4-查看网关信息"><a class="anchor" href="#4-查看网关信息">#</a> 4. 查看网关信息</h5>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre>route <span class="token parameter variable">-n</span> <span class="token comment"># 使⽤ -n 参数不解析主机名</span></pre></td></tr></table></figure><h4 id="二-修改网络配置"><a class="anchor" href="#二-修改网络配置">#</a> 二、修改网络配置</h4>
+<h5 id="1-主机名"><a class="anchor" href="#1-主机名">#</a> 1. 主机名</h5>
+<p>主机名修改完成后注意修改 <code> /etc/hostname</code>  文件。</p>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre>hostnamectl set-hostname <span class="token operator">&lt;</span>主机名<span class="token operator">></span></pre></td></tr><tr><td data-num="2"></td><td><pre></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token function">hostname</span> <span class="token comment"># 查看</span></pre></td></tr></table></figure><h5 id="2-修改网络配置"><a class="anchor" href="#2-修改网络配置">#</a> 2. 修改网络配置</h5>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment"># 激活</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token function">ip</span> <span class="token function">link</span> <span class="token builtin class-name">set</span> dev <span class="token operator">&lt;</span>网卡接口名<span class="token operator">></span> up</pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token comment"># 对照的 ifup 命令</span></pre></td></tr><tr><td data-num="4"></td><td><pre></pre></td></tr><tr><td data-num="5"></td><td><pre></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token comment"># 配置网络接口</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token function">ip</span> addr <span class="token function">add</span> <span class="token number">172.16</span>.182.11/24 dev <span class="token operator">&lt;</span>网卡接口名<span class="token operator">></span></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token comment"># 对照的 ifconfig 命令</span></pre></td></tr><tr><td data-num="9"></td><td><pre></pre></td></tr><tr><td data-num="10"></td><td><pre></pre></td></tr><tr><td data-num="11"></td><td><pre><span class="token comment"># 配置网关</span></pre></td></tr><tr><td data-num="12"></td><td><pre><span class="token function">ip</span> route <span class="token function">add</span> <span class="token number">192.168</span>.159.0/24 via <span class="token number">192.168</span>.159.2</pre></td></tr><tr><td data-num="13"></td><td><pre><span class="token comment"># 对照的 route 命令</span></pre></td></tr></table></figure><h4 id="三-修改网络配置文件"><a class="anchor" href="#三-修改网络配置文件">#</a> 三、修改网络配置文件</h4>
+<h5 id="1-网卡配置文件"><a class="anchor" href="#1-网卡配置文件">#</a> 1. 网卡配置文件</h5>
+<ul>
+<li>文件位置： <code> /etc/sysconfig/network-scripts/ifcfg-&lt;网络接口名&gt;</code></li>
+</ul>
+<figure class="highlight properties"><figcaption data-lang=".properties"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token key attr-name">BOOTPROTO</span><span class="token punctuation">=</span><span class="token value attr-value">static # 还有dhcp,none</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token key attr-name">ONBOOT</span><span class="token punctuation">=</span><span class="token value attr-value">yes</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token key attr-name">IPADDR</span><span class="token punctuation">=</span><span class="token value attr-value">192.168.159.10</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token key attr-name">NETMASK</span><span class="token punctuation">=</span><span class="token value attr-value">255.255.255.0 # 也可以使用PREFIX=24,24为掩码位数</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token key attr-name">GATEWAY</span><span class="token punctuation">=</span><span class="token value attr-value">192.168.159.2</span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token key attr-name">DNS1</span><span class="token punctuation">=</span><span class="token value attr-value">192.168.159.2 # 最多可配置三个DNS服务器</span></pre></td></tr></table></figure><ul>
+<li>
+<p>网络服务管理程序</p>
+<ul>
+<li>分为两种：SysV 和 systemd</li>
+<li>服务分别为：network，NetworkManager</li>
+</ul>
+</li>
+<li>
+<p>修改配置文件后，必须重启服务，才能生效。</p>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre>systemctl restart network</pre></td></tr></table></figure></li>
+</ul>
+<h5 id="2-hosts配置文件"><a class="anchor" href="#2-hosts配置文件">#</a> 2. hosts 配置文件</h5>
+<ul>
+<li>
+<p>文件位置： <code> /etc/hosts</code></p>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token operator">&lt;</span>ip<span class="token operator">></span> <span class="token operator">&lt;</span>主机名<span class="token operator">></span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token number">192.168</span>.159.10 mall</pre></td></tr></table></figure></li>
+</ul>
+<h4 id="四-networkmanager"><a class="anchor" href="#四-networkmanager">#</a> 四、NetworkManager</h4>
+<p>nmcli 四类常用命令：n、g、c、d</p>
+<ol>
+<li>
+<h5 id="nmcli-networking"><a class="anchor" href="#nmcli-networking">#</a> nmcli networking</h5>
+</li>
+</ol>
+<ul>
+<li>显示 NetworkManager 是否接管网络设置</li>
+</ul>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre>nmcli n</pre></td></tr></table></figure><ul>
+<li>查看网络连接状态：</li>
+</ul>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre>nmcli n c</pre></td></tr></table></figure><p>网络连接状态共有五种：full、limited（连网，但无法上网）、portal（连网，但需要认证登录后才能上网）、none（没连网）和 unknown。</p>
+<ul>
+<li>开启、关闭网络连接：</li>
+</ul>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre>nmcli n on</pre></td></tr><tr><td data-num="2"></td><td><pre>nmcli n off</pre></td></tr></table></figure><ol start="2">
+<li>
+<h5 id="nmcli-general"><a class="anchor" href="#nmcli-general">#</a> nmcli general</h5>
+</li>
+</ol>
+<ul>
+<li>显示系统网络状态：</li>
+</ul>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre>nmcli g</pre></td></tr></table></figure><ul>
+<li>显示主机名：</li>
+</ul>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre>nmcli g h</pre></td></tr></table></figure><ul>
+<li>更改主机名:</li>
+</ul>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre>nmcli g h 新的主机名</pre></td></tr></table></figure><p>修改主机名后，需要重启 NetworkManager。</p>
+<ol start="3">
+<li>
+<h5 id="nmcli-connection"><a class="anchor" href="#nmcli-connection">#</a> nmcli connection</h5>
+</li>
+</ol>
+<ul>
+<li>显示所有网络连接的信息：</li>
+</ul>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre>nmcli c</pre></td></tr><tr><td data-num="2"></td><td><pre>nmcli c s <span class="token parameter variable">-a</span> <span class="token comment"># nmcli c show --active</span></pre></td></tr></table></figure><ul>
+<li>显示某一特定连接的详细信息（以 ens33 为例）：</li>
+</ul>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre>nmcli c s ens33</pre></td></tr></table></figure><ul>
+<li>启动 / 关闭指定连接：</li>
+</ul>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre>nmcli c up ens33</pre></td></tr><tr><td data-num="2"></td><td><pre>nmcli c down ens33</pre></td></tr></table></figure><ul>
+<li>修改连接：</li>
+</ul>
+<p>语法： <code>nmcli c modify ens33  [ + | - ]选项 选项值</code></p>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre>nmcli c m ens33 ipv4.address <span class="token number">192.168</span>.159.10/24  <span class="token comment"># 修改 IP 地址和子网掩码</span></pre></td></tr><tr><td data-num="2"></td><td><pre>nmcli c m ens33 ipv4.method manual             <span class="token comment"># 修改为静态配置，默认是 auto. 必须先修改 ipv4.address，然后才能修改 ipv4.method</span></pre></td></tr><tr><td data-num="3"></td><td><pre>nmcli c m ens33 ipv4.gateway <span class="token number">192.168</span>.159.2      <span class="token comment"># 修改默认网关</span></pre></td></tr><tr><td data-num="4"></td><td><pre>nmcli c m ens33 ipv4.dns <span class="token number">192.168</span>.159.2          <span class="token comment"># 修改 DNS</span></pre></td></tr><tr><td data-num="5"></td><td><pre>nmcli c m ens33 +ipv4.dns <span class="token number">114.114</span>.114.114      <span class="token comment"># 添加一个 DNS</span></pre></td></tr><tr><td data-num="6"></td><td><pre>nmcli c m ens33 connection.autoconnect <span class="token function">yes</span>     <span class="token comment"># 开机启动</span></pre></td></tr></table></figure><p>用空引号 <code>&quot;&quot;</code>  代替选项的值，可将选项设回默认值。注意修改后需要通过 <code>nmcli c up ens33</code>  启动配置生效。</p>
+<ul>
+<li>新增连接：</li>
+</ul>
+<p>语法： <code>nmcli c add type 连接类型 选项 选项值</code></p>
+<p>type 为必选项，我们通常用到的是 <code>ethernet</code> 。</p>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre>nmcli c a <span class="token builtin class-name">type</span> ethernet con-name ens36 ifname ens36</pre></td></tr></table></figure><ul>
+<li>删除指定连接：</li>
+</ul>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre>nmcli c delete ens33 <span class="token comment"># delete 不可简写为 d，否则与 down 冲突，但可以简写为 de</span></pre></td></tr></table></figure><ul>
+<li>重载配置文件：</li>
+</ul>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre>nmcli c r <span class="token comment"># 重载所有连接的配置文件</span></pre></td></tr><tr><td data-num="2"></td><td><pre>nmcli c l ifcfg-ens33 <span class="token comment"># 重载某一指定连接的配置文件</span></pre></td></tr></table></figure><ol start="4">
+<li>
+<h5 id="nmcli-device"><a class="anchor" href="#nmcli-device">#</a> nmcli device</h5>
+</li>
+</ol>
+<ul>
+<li>显示所有网络接口设备的状态：</li>
+</ul>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre>nmcli d <span class="token comment"># nmcli device status</span></pre></td></tr></table></figure><ul>
+<li>显示设备的详细信息：</li>
+</ul>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre>nmcli d <span class="token function">sh</span> <span class="token comment"># show 不可简写为 s，否则与 status 冲突，但可以简写为 sh</span></pre></td></tr><tr><td data-num="2"></td><td><pre>nmcli d <span class="token function">sh</span> ens33 <span class="token comment"># 显示某一特定设备的详细信息</span></pre></td></tr></table></figure><ul>
+<li>连接设备</li>
+</ul>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre>nmcli d c ens33 <span class="token comment"># nmcli d connect ens33</span></pre></td></tr></table></figure><ul>
+<li>断开设备</li>
+</ul>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre>nmcli d d ens33 <span class="token comment"># nmcli d disconnect ens33</span></pre></td></tr></table></figure><ul>
+<li>更新设备信息</li>
+</ul>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre>nmcli d r ens33 <span class="token comment"># nmcli d reapply ens33</span></pre></td></tr></table></figure><p>只有在设备处于连接状态，才可以更新设备。</p>
+<h4 id="五-sshd服务"><a class="anchor" href="#五-sshd服务">#</a> 五、sshd 服务</h4>
+<p>sshd 服务可以提供远程登录服务</p>
+<ol>
+<li>登录</li>
+</ol>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment"># ssh 用户名 @主机</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token function">ssh</span> root@centos2</pre></td></tr></table></figure><ul>
+<li>主机可以使用 IP 或者主机名</li>
+</ul>
+<ol start="2">
+<li>ssh 免密登录</li>
+</ol>
+<ul>
+<li>免密可以方便集群运维，避免频繁输入密码</li>
+<li>免密实际是公开密码体系的运用
+<ul>
+<li>公开密码体系
+<ul>
+<li>每个用户有一对密码：私钥和公钥，私钥只有自己保存，公钥任何人可以获得</li>
+<li>使用自己私钥加密的信息只能有自己的公钥解密，反正亦然</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre>ssh-keygen <span class="token comment"># 一直回车，生产私钥和公钥</span></pre></td></tr><tr><td data-num="2"></td><td><pre></pre></td></tr><tr><td data-num="3"></td><td><pre>ssh-copy-id centos2 <span class="token comment"># 将自己的公钥复制给 centos2；centos2 即可使用公钥验证登录者身份</span></pre></td></tr></table></figure><ol start="3">
+<li>scp</li>
+</ol>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment"># scp 源文件 用户 @主机：目标地址</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token function">scp</span> test.txt root@centos2:/root</pre></td></tr></table></figure><ul>
+<li>主机可以使用 IP 或者主机名</li>
+<li>目标地址使用绝对地址</li>
+<li>如果当前用户和远程登录用户是相同的，可以省略</li>
+</ul>
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2023-05-05 22:25:17" itemprop="dateModified" datetime="2023-05-05T22:25:17+08:00">2023-05-05</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 赞赏</button>
+  <p>请我喝[茶]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="YunBao 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="YunBao 支付宝">
+        <p>支付宝</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="YunBao 贝宝">
+        <p>贝宝</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>YunBao <i class="ic i-at"><em>@</em></i>云深不知归处
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://yunbaoj.github.io/2023/05/05/Linux/05-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E7%AF%87-%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/" title="05-系统管理篇-网络管理">http://yunbaoj.github.io/2023/05/05/Linux/05-系统管理篇-网络管理/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC96aF9DTg=="><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2023/05/02/%E6%B5%8B%E8%AF%95/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gcore.jsdelivr.net&#x2F;gh&#x2F;lemonman1&#x2F;pic&#x2F;466f79e8ly1gznu3w5cgaj240z1zfb2a.jpg" title="练习题与答案">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>练习题与答案</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2023/05/05/Linux/07-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E7%AF%87-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gcore.jsdelivr.net&#x2F;gh&#x2F;lemonman1&#x2F;pic&#x2F;466f79e8ly1gznu3w5cgaj240z1zfb2a.jpg" title="07-系统管理篇-进程管理">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> linux</span>
+  <h3>07-系统管理篇-进程管理</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E7%AF%871"><span class="toc-number">1.</span> <span class="toc-text"> 系统管理篇（1）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80-%E6%9F%A5%E7%9C%8B%E7%BD%91%E7%BB%9C%E7%8A%B6%E6%80%81"><span class="toc-number">1.0.1.</span> <span class="toc-text"> 一、查看网络状态</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E7%BD%91%E7%BB%9C%E6%8E%A5%E5%8F%A3%E7%BD%91%E5%8D%A1%E5%91%BD%E5%90%8D"><span class="toc-number">1.0.1.1.</span> <span class="toc-text"> 1. 网络接口（网卡）命名</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7%E5%8C%85"><span class="toc-number">1.0.1.2.</span> <span class="toc-text"> 2. 网络工具包</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E6%9F%A5%E7%9C%8B%E7%BD%91%E7%BB%9C%E6%8E%A5%E5%8F%A3%E7%8A%B6%E6%80%81"><span class="toc-number">1.0.1.3.</span> <span class="toc-text"> 3. 查看网络接口状态</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-%E6%9F%A5%E7%9C%8B%E7%BD%91%E5%85%B3%E4%BF%A1%E6%81%AF"><span class="toc-number">1.0.1.4.</span> <span class="toc-text"> 4. 查看网关信息</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C-%E4%BF%AE%E6%94%B9%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE"><span class="toc-number">1.0.2.</span> <span class="toc-text"> 二、修改网络配置</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E4%B8%BB%E6%9C%BA%E5%90%8D"><span class="toc-number">1.0.2.1.</span> <span class="toc-text"> 1. 主机名</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E4%BF%AE%E6%94%B9%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE"><span class="toc-number">1.0.2.2.</span> <span class="toc-text"> 2. 修改网络配置</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89-%E4%BF%AE%E6%94%B9%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.0.3.</span> <span class="toc-text"> 三、修改网络配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E7%BD%91%E5%8D%A1%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.0.3.1.</span> <span class="toc-text"> 1. 网卡配置文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-hosts%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.0.3.2.</span> <span class="toc-text"> 2. hosts 配置文件</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9B-networkmanager"><span class="toc-number">1.0.4.</span> <span class="toc-text"> 四、NetworkManager</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#nmcli-networking"><span class="toc-number">1.0.4.1.</span> <span class="toc-text"> nmcli networking</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#nmcli-general"><span class="toc-number">1.0.4.2.</span> <span class="toc-text"> nmcli general</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#nmcli-connection"><span class="toc-number">1.0.4.3.</span> <span class="toc-text"> nmcli connection</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#nmcli-device"><span class="toc-number">1.0.4.4.</span> <span class="toc-text"> nmcli device</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%94-sshd%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.0.5.</span> <span class="toc-text"> 五、sshd 服务</span></a></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/2023/04/26/Linux/13-%E9%AB%98%E7%BA%A7%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91/" rel="bookmark" title="13-高级文本编辑sed">13-高级文本编辑sed</a></li><li class="active"><a href="/2023/05/05/Linux/05-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E7%AF%87-%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/" rel="bookmark" title="05-系统管理篇-网络管理">05-系统管理篇-网络管理</a></li><li><a href="/2023/05/05/Linux/07-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E7%AF%87-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/" rel="bookmark" title="07-系统管理篇-进程管理">07-系统管理篇-进程管理</a></li><li><a href="/2023/05/05/Linux/04-%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C%E7%AF%87-%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84%E7%AE%A1%E7%90%86/" rel="bookmark" title="04-系统操作篇-用户和组管理">04-系统操作篇-用户和组管理</a></li><li><a href="/2023/05/05/Linux/06-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E7%AF%87-%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/" rel="bookmark" title="06-系统管理篇-磁盘管理">06-系统管理篇-磁盘管理</a></li><li><a href="/2023/05/05/Linux/02-%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C%E7%AF%87/" rel="bookmark" title="02-系统操作篇">02-系统操作篇</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="YunBao"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">YunBao</p>
+  <div class="description" itemprop="description">This thing is most yearned for.</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">13</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">5</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">3</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL3l1bmJhb2o=" title="https:&#x2F;&#x2F;github.com&#x2F;yunbaoj"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPTE3OTY3MzQ0Mjc=" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;1796734427"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item about" data-url="aHR0cHM6Ly9hYm91dC5tZS94aWFveXVu" title="https:&#x2F;&#x2F;about.me&#x2F;xiaoyun"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>主页</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>关于</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>友链</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>links</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2023/05/02/%E6%B5%8B%E8%AF%95/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2023/05/05/Linux/07-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E7%AF%87-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/linux/" title="分类于 linux">linux</a>
+</div>
+
+    <span><a href="/2023/05/05/Linux/07-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E7%AF%87-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/" title="07-系统管理篇-进程管理">07-系统管理篇-进程管理</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/" title="分类于 二进制杂谈">二进制杂谈</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/Theme-Shoka-Documentation/" title="分类于 Theme Shoka Documentation">Theme Shoka Documentation</a>
+</div>
+
+    <span><a href="/2020/08/13/special/" title="Step.4 主题特殊功能">Step.4 主题特殊功能</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/05/02/%E6%B5%8B%E8%AF%95/" title="练习题与答案">练习题与答案</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/linux/" title="分类于 linux">linux</a>
+</div>
+
+    <span><a href="/2023/05/05/Linux/02-%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C%E7%AF%87/" title="02-系统操作篇">02-系统操作篇</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/blog/" title="分类于 blog">blog</a>
+</div>
+
+    <span><a href="/2023/05/02/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" title="第一篇博客">第一篇博客</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/linux/" title="分类于 linux">linux</a>
+</div>
+
+    <span><a href="/2023/04/26/Linux/13-%E9%AB%98%E7%BA%A7%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91/" title="13-高级文本编辑sed">13-高级文本编辑sed</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/linux/" title="分类于 linux">linux</a>
+</div>
+
+    <span><a href="/2023/05/05/Linux/04-%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C%E7%AF%87-%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84%E7%AE%A1%E7%90%86/" title="04-系统操作篇-用户和组管理">04-系统操作篇-用户和组管理</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/" title="分类于 二进制杂谈">二进制杂谈</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/Theme-Shoka-Documentation/" title="分类于 Theme Shoka Documentation">Theme Shoka Documentation</a>
+</div>
+
+    <span><a href="/2020/08/13/dependents/" title="Step.1 依赖插件">Step.1 依赖插件</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/" title="分类于 二进制杂谈">二进制杂谈</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/Theme-Shoka-Documentation/" title="分类于 Theme Shoka Documentation">Theme Shoka Documentation</a>
+</div>
+
+    <span><a href="/2020/08/13/config/" title="Step.2 基本配置">Step.2 基本配置</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/" title="分类于 二进制杂谈">二进制杂谈</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/Theme-Shoka-Documentation/" title="分类于 Theme Shoka Documentation">Theme Shoka Documentation</a>
+</div>
+
+    <span><a href="/2020/08/13/display/" title="Step.3 界面显示">Step.3 界面显示</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">YunBao @ Cloud’s blog</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2023/05/05/Linux/05-系统管理篇-网络管理/',
+    favicon: {
+      show: "YunYun",
+      hide: "YunYun"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,784 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="云深不知归处" href="http://yunbaoj.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="云深不知归处" href="http://yunbaoj.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="云深不知归处" href="http://yunbaoj.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="http://yunbaoj.github.io/2023/05/05/Linux/04-%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C%E7%AF%87-%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84%E7%AE%A1%E7%90%86/">
+
+
+
+  <title>
+04-系统操作篇-用户和组管理 - linux |
+Cloud’s blog = 云深不知归处 = May the world be closely tied with you.</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">04-系统操作篇-用户和组管理
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2023-05-05 22:14:55">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-05-05T22:14:55+08:00">2023-05-05</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Cloud’s blog</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://gcore.jsdelivr.net/gh/lemonman1/pic/466f79e8ly1gznu8tk91hj21kw10ekjm.jpg"></li>
+          <li class="item" data-background-image="https://gcore.jsdelivr.net/gh/lemonman1/pic/466f79e8ly1gznu6orfk7j226h1tee83.jpg"></li>
+          <li class="item" data-background-image="https://gcore.jsdelivr.net/gh/lemonman1/pic/466f79e8ly1gznu3w5cgaj240z1zfb2a.jpg"></li>
+          <li class="item" data-background-image="https://gcore.jsdelivr.net/gh/lemonman1/pic/466f79e8ly1gzntkmoqvzj23342klx6q.jpg"></li>
+          <li class="item" data-background-image="https://gcore.jsdelivr.net/gh/lemonman1/pic/466f79e8ly1gznu5g74rdj21oi1ece83.jpg"></li>
+          <li class="item" data-background-image="https://gcore.jsdelivr.net/gh/lemonman1/pic/466f79e8ly1gznu0nhub5j21w81c84qs.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/linux/" itemprop="item" rel="index" title="分类于 linux"><span itemprop="name">linux</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh_CN">
+  <link itemprop="mainEntityOfPage" href="http://yunbaoj.github.io/2023/05/05/Linux/04-%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C%E7%AF%87-%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84%E7%AE%A1%E7%90%86/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="YunBao">
+    <meta itemprop="description" content="May the world be closely tied with you., This thing is most yearned for.">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="云深不知归处">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h2 id="用户和用户组管理"><a class="anchor" href="#用户和用户组管理">#</a> 用户和用户组管理</h2>
+<h3 id="一-相关概念"><a class="anchor" href="#一-相关概念">#</a> 一、相关概念</h3>
+<h4 id="1-多用户操作系统"><a class="anchor" href="#1-多用户操作系统">#</a> 1. 多用户操作系统</h4>
+<ul>
+<li>Windwos 也是多用户操作系统，但是一般都是个人使用</li>
+<li>多用户的目的是实现隔离
+<ul>
+<li>用户权限隔离</li>
+<li>系统资源隔离</li>
+<li>root 用户与普通用户的区分</li>
+</ul>
+</li>
+</ul>
+<h3 id="二-用户管理"><a class="anchor" href="#二-用户管理">#</a> 二、用户管理</h3>
+<h4 id="1-常用命令"><a class="anchor" href="#1-常用命令">#</a> 1. 常用命令</h4>
+<ul>
+<li>
+<p>需要用户权限，注意先切换为 root 用户</p>
+</li>
+<li>
+<p>用户管理</p>
+<ul>
+<li>
+<p>新建用户</p>
+<p><code>useradd 用户名</code></p>
+</li>
+</ul>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">useradd</span> zhangsan</pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token function">id</span> zhangsan</pre></td></tr></table></figure><ul>
+<li>
+<p>新建用户操作的背后</p>
+<ul>
+<li>为用户在 /home 目录下新建同名目录做为用户的家目录。并在该目录下创建和用户相关的配置文件，这些配置文件为隐藏文件</li>
+<li>将新用户记录到 <code>/etc/passwd</code>  文件中</li>
+<li>将新用户密码信息记录到 <code>/etc/shadow</code>  文件中</li>
+<li>系统为新用户创建用户 id - uid</li>
+<li>如果没有为新用户指定组，系统为新用户创建一个同名的组</li>
+</ul>
+</li>
+<li>
+<p>修改用户密码</p>
+<p><code>passwd 用户名</code></p>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">passwd</span> zhangsan</pre></td></tr></table></figure></li>
+<li>
+<p>删除用户</p>
+<p><code>userdel 用户名</code></p>
+<p>-r 删除用户同时删除用户 home 目录，以及同名组</p>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">userdel</span> <span class="token parameter variable">-r</span> zhangsan</pre></td></tr></table></figure></li>
+<li>
+<p>修改用户属性</p>
+<p>usermod 用户名</p>
+<p>-d 修改用户 home 目录</p>
+<p>-g 修改用户组</p>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">useradd</span> lisi</pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token function">usermod</span> <span class="token parameter variable">-d</span> /home/w1 lisi</pre></td></tr></table></figure></li>
+<li>
+<p>修改用户密码属性</p>
+<p><code>chage 用户名</code></p>
+<pre><code class="language-shell">
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>组管理</p>
+<ul>
+<li>
+<p>新建用户组</p>
+<p><code>groupadd 组名</code></p>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">groupadd</span> group1</pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token function">usermod</span> <span class="token parameter variable">-g</span> group1 lisi</pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token function">id</span> lisi</pre></td></tr><tr><td data-num="4"></td><td><pre></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token comment"># 创建用户同时也可以指定组</span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token function">useradd</span> <span class="token parameter variable">-g</span> group1 wangwu</pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token function">id</span> wangwu</pre></td></tr></table></figure></li>
+<li>
+<p>删除用户组</p>
+<p><code>groupdel 组名</code></p>
+<p>如果还有用户以要删除的组作为主要组，无法删除！</p>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">groupdel</span> group1</pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h4 id="2-用户切换"><a class="anchor" href="#2-用户切换">#</a> 2. 用户切换</h4>
+<ul>
+<li>
+<p>切换用户</p>
+<ul>
+<li>当前用户权限不合适，需要临时切换到其他用户身份执行命令</li>
+</ul>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment"># 切换用户</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token function">su</span></pre></td></tr><tr><td data-num="3"></td><td><pre></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token comment"># 使用 login shell 方式切换用户</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token function">su</span> - USERNAME</pre></td></tr></table></figure></li>
+<li>
+<p>以其他用户身份执行命令</p>
+<ul>
+<li>当前用户权限不合适，不切换用户身份，临时使用其他用户身份（root）执行命令</li>
+<li>su 需要知道 root 用户密码，sudo 无需密码</li>
+<li><code>sudo</code>  - 以其他用户身份执行命令</li>
+<li><code>visudo</code>  - 设置需要使用 sudo 的用户
+<ul>
+<li>配置格式分为两段，例如 <code>%group1 ALL=(ALL) NOPASSWD:ALL</code></li>
+<li>第一段 命令授予哪个用户或组 用户直接使用用户名；如果是组，需要在前面加 %</li>
+<li>第二段 授权的命令
+<ul>
+<li>基本格式为  <code>主机=(可切换用户) 命令</code></li>
+<li>主机指定用户可以从哪里执行命令，只允许本地执行用 localhost，允许本地和远程用 ALL</li>
+<li>可切换用户通常可以省略</li>
+<li>多个命令用逗号分隔，命令使用绝对路径</li>
+<li>默认需要输入当前用户密码才能执行 sudo。 NOPASSWD 表示不需要密码，但是不安全，添加在命令前，用 <code>:</code>  分隔</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment"># 实验场景 root, lisi</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token comment"># root 用户设置了 30 分钟后关机</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token comment"># lisi 用户工作尚未完成，需要取消关机操作</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token punctuation">(</span>root<span class="token punctuation">)</span> <span class="token function">shutdown</span> <span class="token parameter variable">-h</span> <span class="token number">30</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token punctuation">(</span>lisi<span class="token punctuation">)</span> <span class="token function">su</span> - lisi</pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token punctuation">(</span>lisi<span class="token punctuation">)</span> <span class="token function">shutdown</span> <span class="token parameter variable">-c</span> </pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token comment"># 但是 lisi 当前并无执行 shutdown 命令的权限</span></pre></td></tr><tr><td data-num="8"></td><td><pre></pre></td></tr><tr><td data-num="9"></td><td><pre><span class="token punctuation">(</span>root<span class="token punctuation">)</span> visudo</pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token comment"># 在文件最下方添加如下配置</span></pre></td></tr><tr><td data-num="11"></td><td><pre>lisi <span class="token assign-left variable">ALL</span><span class="token operator">=</span>/sbin/shutdown, /sbin/useradd</pre></td></tr><tr><td data-num="12"></td><td><pre><span class="token comment"># 如果不需要输入密码，使用下面配置</span></pre></td></tr><tr><td data-num="13"></td><td><pre>lisi <span class="token assign-left variable">ALL</span><span class="token operator">=</span>NOPASSWD: /sbin/shutdown, /sbin/useradd</pre></td></tr><tr><td data-num="14"></td><td><pre><span class="token comment"># 保存退出</span></pre></td></tr><tr><td data-num="15"></td><td><pre></pre></td></tr><tr><td data-num="16"></td><td><pre></pre></td></tr><tr><td data-num="17"></td><td><pre><span class="token comment"># 现在 lisi 可以通过 sudo 执行 shutdown 命令</span></pre></td></tr><tr><td data-num="18"></td><td><pre><span class="token punctuation">(</span>lisi<span class="token punctuation">)</span> <span class="token function">sudo</span> /sbin/shutdown <span class="token parameter variable">-c</span></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="3-用户配置文件"><a class="anchor" href="#3-用户配置文件">#</a> 3. 用户配置文件</h4>
+<ul>
+<li><code>/etc/passwd</code>  用户配置文件
+<ul>
+<li>例如  <code>root:x:0:0:root:/root:/bin/bash</code></li>
+<li>第一字段 用户名</li>
+<li>第二字段 是否需要密码验证</li>
+<li>第三字段 UID</li>
+<li>第四字段 GID</li>
+<li>第五字段 用户描述信息</li>
+<li>第六字段 用户 home 目录</li>
+<li>第七字段 login shell</li>
+</ul>
+</li>
+<li><code>/etc/shadow</code>  用户密码相关配置文件
+<ul>
+<li>只需要了解前两个字段</li>
+<li>第一字段 对应用户名</li>
+<li>第二字段 加密后的密码</li>
+</ul>
+</li>
+<li><code>/etc/group</code>  用户组配置文件
+<ul>
+<li>例如 <code>root:x:0:</code></li>
+<li>第一字段 组名</li>
+<li>第二字段 是否需要密码验证</li>
+<li>第三字段 GID</li>
+<li>第四字段 其他组设置，说明组内某用户的主要组是隶属于其他组的</li>
+</ul>
+</li>
+</ul>
+<h3 id="三-文件权限"><a class="anchor" href="#三-文件权限">#</a> 三、文件权限</h3>
+<h4 id="1-文件权限的表示方法"><a class="anchor" href="#1-文件权限的表示方法">#</a> 1. 文件权限的表示方法</h4>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre>drwx------ <span class="token number">17</span>  root  root   544B  <span class="token number">4</span>  <span class="token number">8</span> <span class="token number">15</span>:20  Downloads</pre></td></tr><tr><td data-num="2"></td><td><pre>类型  权限      所属用户和组                      文件名</pre></td></tr></table></figure><ul>
+<li>
+<p>文件类型</p>
+<ul>
+<li><code>-</code>  普通文件</li>
+<li>d 目录文件</li>
+<li>b 块特殊文件 - 块设备</li>
+<li>c 字符特殊文件 - 字符终端</li>
+<li>l 符号链接 - 类似 windows 的快捷方式</li>
+<li>f 命名管道</li>
+<li>s 套接字文件</li>
+</ul>
+</li>
+<li>
+<p>字符权限表示法</p>
+<ul>
+<li>r 读 w 写 x 执行</li>
+</ul>
+</li>
+<li>
+<p>数字权限表示法</p>
+<ul>
+<li>r=4 w=2 x=1</li>
+</ul>
+</li>
+<li>
+<p>文件权限的表示方法</p>
+<p>例如： <code>-rw-r-xr-- 1 lisi group1 mtime ﬁlename</code></p>
+<ul>
+<li>
+<p>rw- 文件属主的权限</p>
+</li>
+<li>
+<p>r-x 文件属组的权限</p>
+</li>
+<li>
+<p>r-- 其他用户的权限</p>
+</li>
+<li>
+<p>创建新⽂件有默认权限，根据 umask 值计算，属主和属组根据当前进程的⽤户来设定</p>
+</li>
+</ul>
+</li>
+<li>
+<p>目录权限的表示方法</p>
+<ul>
+<li>x 进入目录</li>
+<li>rx 显示目录内的文件名</li>
+<li>wx 修改目录内的文件名</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-文件权限管理常用命令"><a class="anchor" href="#2-文件权限管理常用命令">#</a> 2. 文件权限管理常用命令</h4>
+<ul>
+<li>
+<p>修改文件、目录权限 - chmod</p>
+<ul>
+<li>用户
+<ul>
+<li>u 属主自己 g 同组用户 o 其他用户 a 所有</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">chmod</span> u+x /tmp/testfile</pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token function">chmod</span> a+x /tmp/testfile</pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token function">chmod</span> o-r /tmp/testfile</pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token function">chmod</span> <span class="token assign-left variable">g</span><span class="token operator">=</span>rw- /tmp/testfile</pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token function">chmod</span> <span class="token assign-left variable">u</span><span class="token operator">=</span>rwx,g-w /tmp/testfile</pre></td></tr><tr><td data-num="6"></td><td><pre></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token function">chmod</span> <span class="token number">755</span> /tmp/testfile</pre></td></tr></table></figure><ul>
+<li>
+<p>同时更改子目录和文件的权限</p>
+<p>使用选项 <code>-R</code> ，例如</p>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">chmod</span> <span class="token parameter variable">-R</span> u+x /tmp/</pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>
+<p>更改属主、属组 - chown</p>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">chown</span> 用户名 /tmp/testfile</pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token function">chown</span> :组名 /tmp/testfile</pre></td></tr><tr><td data-num="3"></td><td><pre></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token function">chown</span> 用户名:组名 /tmp/testfile</pre></td></tr></table></figure></li>
+</ul>
+<h4 id="3-针对特定用户或组进行授权"><a class="anchor" href="#3-针对特定用户或组进行授权">#</a> 3. 针对特定用户或组进行授权</h4>
+<p>实际是通过设置文件访问控制列表实现的，主要利用两个选项 <code>-m</code>  和 <code>-x</code>  进行设置和取消权限。</p>
+<ul>
+<li>设置权限</li>
+</ul>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment"># 指定 zhangsan 用户对 test.txt 有读写权限</span></pre></td></tr><tr><td data-num="2"></td><td><pre>setfacl <span class="token parameter variable">-m</span> u:zhangsan:rx test.txt</pre></td></tr><tr><td data-num="3"></td><td><pre></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token comment"># 指定 music 组对 test.txt 有读权限</span></pre></td></tr><tr><td data-num="5"></td><td><pre>setfacl <span class="token parameter variable">-m</span> g:music:r test.txt</pre></td></tr></table></figure><p>其中 acl 格式要特别注意，具体为 <code>类型:具体值:权限</code> ，</p>
+<p>其中：</p>
+<p>类型：u 代表用户，g 代表组；</p>
+<p>具体值：根据类型填写存在的用户或者组；</p>
+<p>权限：采用权限字符表示法或者数字表示法。</p>
+<ul>
+<li>
+<p>取消权限</p>
+<p>取消的是 <code>setfacl -m</code>  命令设置到文件 ACL 的权限，用户或组恢复到默认权限。</p>
+</li>
+</ul>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment"># 取消 zhangsan 用户对 test.txt 的 ACL 权限</span></pre></td></tr><tr><td data-num="2"></td><td><pre>setfacl <span class="token parameter variable">-x</span> u:zhangsan test.txt</pre></td></tr><tr><td data-num="3"></td><td><pre></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token comment"># 取消 music 组对 test.txt 的 ACL 权限</span></pre></td></tr><tr><td data-num="5"></td><td><pre>setfacl <span class="token parameter variable">-x</span> g:music test.txt</pre></td></tr></table></figure><p>注意取消权限时，acl 格式不需要第三部分</p>
+<ul>
+<li>查看具体权限（包括 ACL 权限）</li>
+</ul>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre>getfacl test.txt</pre></td></tr></table></figure><h4 id="4-案例演示"><a class="anchor" href="#4-案例演示">#</a> 4. 案例演示</h4>
+<p>案例 1 - 文件权限管理</p>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">mkdir</span> /test</pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token function">ls</span> <span class="token parameter variable">-ld</span> /test</pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token comment"># 观察默认权限</span></pre></td></tr><tr><td data-num="4"></td><td><pre></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token comment"># 创建三个测试用户</span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token function">groupadd</span> groupone</pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token function">useradd</span> <span class="token parameter variable">-g</span> groupone user1 </pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token function">useradd</span> <span class="token parameter variable">-g</span> groupone user2</pre></td></tr><tr><td data-num="9"></td><td><pre><span class="token function">useradd</span> user3</pre></td></tr><tr><td data-num="10"></td><td><pre></pre></td></tr><tr><td data-num="11"></td><td><pre><span class="token function">chown</span> user1 /test</pre></td></tr><tr><td data-num="12"></td><td><pre><span class="token function">ls</span> <span class="token parameter variable">-ld</span> /test</pre></td></tr><tr><td data-num="13"></td><td><pre><span class="token comment"># 观察权限变化</span></pre></td></tr><tr><td data-num="14"></td><td><pre></pre></td></tr><tr><td data-num="15"></td><td><pre><span class="token function">chown</span> :groupone /test</pre></td></tr><tr><td data-num="16"></td><td><pre><span class="token function">ls</span> <span class="token parameter variable">-ld</span> /test</pre></td></tr><tr><td data-num="17"></td><td><pre><span class="token comment"># 观察权限变化</span></pre></td></tr><tr><td data-num="18"></td><td><pre></pre></td></tr><tr><td data-num="19"></td><td><pre><span class="token builtin class-name">cd</span> /test</pre></td></tr><tr><td data-num="20"></td><td><pre><span class="token function">touch</span> afile</pre></td></tr><tr><td data-num="21"></td><td><pre><span class="token function">ls</span> <span class="token parameter variable">-l</span> afile</pre></td></tr><tr><td data-num="22"></td><td><pre><span class="token function">chmod</span> u+x afile</pre></td></tr><tr><td data-num="23"></td><td><pre><span class="token comment"># 观察权限变化</span></pre></td></tr><tr><td data-num="24"></td><td><pre></pre></td></tr><tr><td data-num="25"></td><td><pre><span class="token function">chmod</span> g-r afile</pre></td></tr><tr><td data-num="26"></td><td><pre><span class="token comment"># 观察权限变化</span></pre></td></tr><tr><td data-num="27"></td><td><pre></pre></td></tr><tr><td data-num="28"></td><td><pre><span class="token function">chmod</span> <span class="token assign-left variable">o</span><span class="token operator">=</span>w afile</pre></td></tr><tr><td data-num="29"></td><td><pre><span class="token comment"># 观察权限变化</span></pre></td></tr><tr><td data-num="30"></td><td><pre></pre></td></tr><tr><td data-num="31"></td><td><pre><span class="token function">chmod</span>  afile</pre></td></tr><tr><td data-num="32"></td><td><pre><span class="token comment"># 观察权限变化</span></pre></td></tr><tr><td data-num="33"></td><td><pre></pre></td></tr><tr><td data-num="34"></td><td><pre><span class="token function">chmod</span> <span class="token number">644</span> afile</pre></td></tr><tr><td data-num="35"></td><td><pre><span class="token comment"># 观察权限变化</span></pre></td></tr><tr><td data-num="36"></td><td><pre></pre></td></tr><tr><td data-num="37"></td><td><pre><span class="token comment"># 默认权限 666 - umask</span></pre></td></tr><tr><td data-num="38"></td><td><pre><span class="token builtin class-name">umask</span></pre></td></tr><tr><td data-num="39"></td><td><pre><span class="token function">touch</span> bfile</pre></td></tr><tr><td data-num="40"></td><td><pre><span class="token comment"># 观察权限</span></pre></td></tr></table></figure><p>案例 2 - 文件权限实际意义</p>
+<figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">chown</span> user1:groupone afile</pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token function">chmod</span> <span class="token number">400</span> afile</pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token builtin class-name">echo</span> <span class="token number">123</span> <span class="token operator">></span> afile <span class="token comment"># 输出重定向</span></pre></td></tr><tr><td data-num="4"></td><td><pre></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token comment"># 切换到 user1</span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token function">su</span> - user1</pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token function">cat</span> /test/afile</pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token builtin class-name">echo</span> <span class="token number">456</span> <span class="token operator">></span> /test/afile <span class="token comment"># 有无权限，如何解决？</span></pre></td></tr><tr><td data-num="9"></td><td><pre></pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token punctuation">(</span>user1<span class="token punctuation">)</span> <span class="token function">touch</span> /test/bfile</pre></td></tr><tr><td data-num="11"></td><td><pre><span class="token punctuation">(</span>user1<span class="token punctuation">)</span> <span class="token function">chmod</span> 020 /test/bfile <span class="token comment"># 用户和属组权限冲突，权限如何？</span></pre></td></tr><tr><td data-num="12"></td><td><pre><span class="token punctuation">(</span>user1<span class="token punctuation">)</span> <span class="token builtin class-name">echo</span> <span class="token number">123</span> <span class="token operator">></span> /test/bfile</pre></td></tr><tr><td data-num="13"></td><td><pre><span class="token punctuation">(</span>user1<span class="token punctuation">)</span> <span class="token function">su</span> - user2</pre></td></tr><tr><td data-num="14"></td><td><pre><span class="token punctuation">(</span>user2<span class="token punctuation">)</span> <span class="token builtin class-name">echo</span> <span class="token number">456</span> <span class="token operator">></span> /test/bfile</pre></td></tr><tr><td data-num="15"></td><td><pre></pre></td></tr><tr><td data-num="16"></td><td><pre><span class="token function">chmod</span> 000 /test</pre></td></tr><tr><td data-num="17"></td><td><pre><span class="token function">su</span> - user1</pre></td></tr><tr><td data-num="18"></td><td><pre><span class="token function">ls</span> <span class="token parameter variable">-l</span> <span class="token comment"># 有无权限？</span></pre></td></tr><tr><td data-num="19"></td><td><pre><span class="token builtin class-name">cd</span> /test <span class="token comment"># 有无权限？</span></pre></td></tr><tr><td data-num="20"></td><td><pre></pre></td></tr><tr><td data-num="21"></td><td><pre><span class="token function">chmod</span> <span class="token assign-left variable">u</span><span class="token operator">=</span>x /test</pre></td></tr><tr><td data-num="22"></td><td><pre><span class="token function">su</span> - user1</pre></td></tr><tr><td data-num="23"></td><td><pre><span class="token builtin class-name">cd</span> /test </pre></td></tr><tr><td data-num="24"></td><td><pre><span class="token comment"># 说明什么？</span></pre></td></tr><tr><td data-num="25"></td><td><pre></pre></td></tr><tr><td data-num="26"></td><td><pre><span class="token function">chmod</span> 000 /test</pre></td></tr><tr><td data-num="27"></td><td><pre><span class="token function">chmod</span> <span class="token assign-left variable">u</span><span class="token operator">=</span>rx /test</pre></td></tr><tr><td data-num="28"></td><td><pre><span class="token function">su</span> - user1</pre></td></tr><tr><td data-num="29"></td><td><pre><span class="token builtin class-name">cd</span> /test </pre></td></tr><tr><td data-num="30"></td><td><pre><span class="token function">ls</span> <span class="token parameter variable">-l</span> </pre></td></tr><tr><td data-num="31"></td><td><pre><span class="token comment"># 说明什么？</span></pre></td></tr><tr><td data-num="32"></td><td><pre></pre></td></tr><tr><td data-num="33"></td><td><pre><span class="token function">chmod</span> 000 /test</pre></td></tr><tr><td data-num="34"></td><td><pre><span class="token function">chmod</span> <span class="token assign-left variable">u</span><span class="token operator">=</span>wx /test</pre></td></tr><tr><td data-num="35"></td><td><pre><span class="token function">su</span> - user1</pre></td></tr><tr><td data-num="36"></td><td><pre><span class="token builtin class-name">cd</span> /test</pre></td></tr><tr><td data-num="37"></td><td><pre><span class="token function">rm</span> afile </pre></td></tr><tr><td data-num="38"></td><td><pre><span class="token function">ls</span> <span class="token parameter variable">-l</span></pre></td></tr><tr><td data-num="39"></td><td><pre><span class="token comment"># 说明什么？</span></pre></td></tr></table></figure>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2023-05-05 22:25:22" itemprop="dateModified" datetime="2023-05-05T22:25:22+08:00">2023-05-05</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 赞赏</button>
+  <p>请我喝[茶]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="YunBao 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="YunBao 支付宝">
+        <p>支付宝</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="YunBao 贝宝">
+        <p>贝宝</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>YunBao <i class="ic i-at"><em>@</em></i>云深不知归处
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://yunbaoj.github.io/2023/05/05/Linux/04-%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C%E7%AF%87-%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84%E7%AE%A1%E7%90%86/" title="04-系统操作篇-用户和组管理">http://yunbaoj.github.io/2023/05/05/Linux/04-系统操作篇-用户和组管理/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC96aF9DTg=="><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2023/05/05/Linux/07-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E7%AF%87-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gcore.jsdelivr.net&#x2F;gh&#x2F;lemonman1&#x2F;pic&#x2F;466f79e8ly1gzntkmoqvzj23342klx6q.jpg" title="07-系统管理篇-进程管理">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> linux</span>
+  <h3>07-系统管理篇-进程管理</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2023/05/05/Linux/06-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E7%AF%87-%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gcore.jsdelivr.net&#x2F;gh&#x2F;lemonman1&#x2F;pic&#x2F;466f79e8ly1gznu8tk91hj21kw10ekjm.jpg" title="06-系统管理篇-磁盘管理">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> linux</span>
+  <h3>06-系统管理篇-磁盘管理</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E5%92%8C%E7%94%A8%E6%88%B7%E7%BB%84%E7%AE%A1%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text"> 用户和用户组管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text"> 一、相关概念</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%A4%9A%E7%94%A8%E6%88%B7%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 1. 多用户操作系统</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C-%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86"><span class="toc-number">1.2.</span> <span class="toc-text"> 二、用户管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 1. 常用命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%94%A8%E6%88%B7%E5%88%87%E6%8D%A2"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 2. 用户切换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E7%94%A8%E6%88%B7%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.2.3.</span> <span class="toc-text"> 3. 用户配置文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89-%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90"><span class="toc-number">1.3.</span> <span class="toc-text"> 三、文件权限</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E7%9A%84%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 1. 文件权限的表示方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 2. 文件权限管理常用命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E9%92%88%E5%AF%B9%E7%89%B9%E5%AE%9A%E7%94%A8%E6%88%B7%E6%88%96%E7%BB%84%E8%BF%9B%E8%A1%8C%E6%8E%88%E6%9D%83"><span class="toc-number">1.3.3.</span> <span class="toc-text"> 3. 针对特定用户或组进行授权</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E6%A1%88%E4%BE%8B%E6%BC%94%E7%A4%BA"><span class="toc-number">1.3.4.</span> <span class="toc-text"> 4. 案例演示</span></a></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/2023/04/26/Linux/13-%E9%AB%98%E7%BA%A7%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91/" rel="bookmark" title="13-高级文本编辑sed">13-高级文本编辑sed</a></li><li><a href="/2023/05/05/Linux/05-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E7%AF%87-%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/" rel="bookmark" title="05-系统管理篇-网络管理">05-系统管理篇-网络管理</a></li><li><a href="/2023/05/05/Linux/07-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E7%AF%87-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/" rel="bookmark" title="07-系统管理篇-进程管理">07-系统管理篇-进程管理</a></li><li class="active"><a href="/2023/05/05/Linux/04-%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C%E7%AF%87-%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84%E7%AE%A1%E7%90%86/" rel="bookmark" title="04-系统操作篇-用户和组管理">04-系统操作篇-用户和组管理</a></li><li><a href="/2023/05/05/Linux/06-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E7%AF%87-%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/" rel="bookmark" title="06-系统管理篇-磁盘管理">06-系统管理篇-磁盘管理</a></li><li><a href="/2023/05/05/Linux/02-%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C%E7%AF%87/" rel="bookmark" title="02-系统操作篇">02-系统操作篇</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="YunBao"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">YunBao</p>
+  <div class="description" itemprop="description">This thing is most yearned for.</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">13</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">5</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">3</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL3l1bmJhb2o=" title="https:&#x2F;&#x2F;github.com&#x2F;yunbaoj"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPTE3OTY3MzQ0Mjc=" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;1796734427"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item about" data-url="aHR0cHM6Ly9hYm91dC5tZS94aWFveXVu" title="https:&#x2F;&#x2F;about.me&#x2F;xiaoyun"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>主页</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>关于</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>友链</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>links</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2023/05/05/Linux/07-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E7%AF%87-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2023/05/05/Linux/06-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E7%AF%87-%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/blog/" title="分类于 blog">blog</a>
+</div>
+
+    <span><a href="/2023/05/02/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" title="第一篇博客">第一篇博客</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/linux/" title="分类于 linux">linux</a>
+</div>
+
+    <span><a href="/2023/05/05/Linux/07-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E7%AF%87-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/" title="07-系统管理篇-进程管理">07-系统管理篇-进程管理</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/blog/" title="分类于 blog">blog</a>
+</div>
+
+    <span><a href="/2023/05/02/hello-world/" title="Hello World">Hello World</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/" title="分类于 二进制杂谈">二进制杂谈</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/Theme-Shoka-Documentation/" title="分类于 Theme Shoka Documentation">Theme Shoka Documentation</a>
+</div>
+
+    <span><a href="/2020/08/13/special/" title="Step.4 主题特殊功能">Step.4 主题特殊功能</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/" title="分类于 二进制杂谈">二进制杂谈</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/Theme-Shoka-Documentation/" title="分类于 Theme Shoka Documentation">Theme Shoka Documentation</a>
+</div>
+
+    <span><a href="/2020/08/13/display/" title="Step.3 界面显示">Step.3 界面显示</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/linux/" title="分类于 linux">linux</a>
+</div>
+
+    <span><a href="/2023/05/05/Linux/02-%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C%E7%AF%87/" title="02-系统操作篇">02-系统操作篇</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/linux/" title="分类于 linux">linux</a>
+</div>
+
+    <span><a href="/2023/04/26/Linux/13-%E9%AB%98%E7%BA%A7%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91/" title="13-高级文本编辑sed">13-高级文本编辑sed</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/" title="分类于 二进制杂谈">二进制杂谈</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/Theme-Shoka-Documentation/" title="分类于 Theme Shoka Documentation">Theme Shoka Documentation</a>
+</div>
+
+    <span><a href="/2020/08/13/dependents/" title="Step.1 依赖插件">Step.1 依赖插件</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/" title="分类于 二进制杂谈">二进制杂谈</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9D%82%E8%B0%88/Theme-Shoka-Documentation/" title="分类于 Theme Shoka Documentation">Theme Shoka Documentation</a>
+</div>
+
+    <span><a href="/2020/08/13/config/" title="Step.2 基本配置">Step.2 基本配置</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/linux/" title="分类于 linux">linux</a>
+</div>
+
+    <span><a href="/2023/05/05/Linux/06-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E7%AF%87-%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/" title="06-系统管理篇-磁盘管理">06-系统管理篇-磁盘管理</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">YunBao @ Cloud’s blog</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2023/05/05/Linux/04-系统操作篇-用户和组管理/',
+    favicon: {
+      show: "YunYun",
+      hide: "YunYun"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
